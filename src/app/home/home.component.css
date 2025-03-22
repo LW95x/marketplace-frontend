@@ -45,10 +45,46 @@ header {
     transition: filter 0.3s ease;
 }
 
-.nav-item:hover, .search:hover {
+.nav-item:hover, .search:hover, .big-deal-item:hover, .small-deal-item:hover {
     background-color: #D6CFDB;
 }
 
 .profile-cart {
+    margin-right: 1rem;
+}
+
+.big-deals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin: 1rem;
+}
+
+.big-deal-item {
+    border-color: #ECE6F0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    width: 50rem;
+    height: 20rem;
+    margin-right: 1rem;
+}
+
+.small-deals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin: 1rem;
+}
+
+.small-deal-item {
+    border-color: #ECE6F0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    width: 50rem;
+    height: 20rem;
     margin-right: 1rem;
 }
