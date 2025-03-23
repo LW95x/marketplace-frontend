@@ -3,7 +3,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-height: 5rem;
+    max-height: 6rem;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -18,10 +18,9 @@ header {
     background-color: #ECE6F0;
     border-radius: 2rem;
     padding: 1rem;
-    max-width: 50rem;
+    max-width: 60rem;
     width: 100%;
     height: 1.5rem;
-    margin-bottom: 1rem;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -32,6 +31,7 @@ header {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     font-family: Arial, Helvetica, sans-serif;
+    text-transform: bol;
 }
 
 .nav-item {
@@ -50,6 +50,9 @@ header {
 }
 
 .profile-cart {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
     margin-right: 1rem;
 }
 
@@ -67,8 +70,10 @@ header {
     border-style: solid;
     border-radius: 0.5rem;
     width: 50rem;
-    height: 20rem;
+    height: 25rem;
     margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .small-deals {
@@ -87,4 +92,38 @@ header {
     width: 50rem;
     height: 20rem;
     margin-right: 1rem;
+}
+
+.logo {
+    margin-left: 5rem;
+    font-size: 2rem;
+}
+
+.deal-header {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.big-product-image {
+    width: 48rem;
+    height: 15rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    padding: 1rem;
+    align-items: center;
+    border-radius: 1.5rem;
+}
+
+.small-product-image {
+    width: 24rem;
+    height: 10rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    padding: 1rem;
+    align-items: center;
+    border-radius: 1.5rem;
+}
+
+.content {
+    margin-left: 1.5rem;
 }
