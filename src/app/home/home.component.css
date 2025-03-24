@@ -31,18 +31,20 @@ header {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     font-family: Arial, Helvetica, sans-serif;
-    text-transform: bol;
+    text-transform: bold;
 }
 
 .nav-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
     color: black;
     text-align: center;
     text-decoration: none;
     transition: filter 0.3s ease;
+    font-weight: bold;
+    gap: 4px;
 }
 
 .nav-item:hover, .search:hover, .big-deal-item:hover, .small-deal-item:hover {
