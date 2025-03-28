@@ -6,6 +6,7 @@ header {
     max-height: 6rem;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 .search {
@@ -66,4 +67,9 @@ header {
     gap: 2rem;
     align-items: center;
     margin-right: 1rem;
+}
+
+.logo {
+    font-size: 36px;
+    text-align: center;
 }
