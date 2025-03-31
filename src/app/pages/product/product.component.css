@@ -1,0 +1,42 @@
+.big-deals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin: 1rem;
+}
+
+.big-deal-item {
+    border-color: #ECE6F0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    width: 50rem;
+    height: 25rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-header {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.big-product-image {
+    width: 48rem;
+    height: 15rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    padding: 1rem;
+    align-items: center;
+    border-radius: 1.5rem;
+}
+
+.content {
+    margin-left: 1.5rem;
+}
+

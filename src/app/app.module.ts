@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductComponent } from './pages/product/product.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     HeaderComponent,
     ProductsComponent,
-    FooterComponent
+    FooterComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
