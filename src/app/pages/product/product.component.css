@@ -24,6 +24,7 @@
     font-size: 48px;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    font-weight: bold;
 }
 
 .big-product-image {
@@ -38,5 +39,14 @@
 
 .content {
     margin-left: 1.5rem;
+}
+
+.custom-button {
+    background-color: #77a6da !important; 
+    transition: background-color 1s;
+}
+
+.custom-button:hover {
+    background-color: #558cb3;
 }
 

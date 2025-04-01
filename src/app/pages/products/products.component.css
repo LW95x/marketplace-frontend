@@ -95,11 +95,13 @@
     margin-left: 1.5rem;
 }
 
-.heading { 
-    margin-top: 1rem;  
+.products-header { 
+    margin-top: 2rem;  
+    margin-bottom: 2rem;  
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 48px;
+    font-weight: bold;
 }
 
 .search-div {

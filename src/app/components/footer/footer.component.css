@@ -27,3 +27,10 @@
 .resources {
     margin-top: 1.5rem;
 }
+
+.logo {
+    font-size: 64px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 3rem;
+}
