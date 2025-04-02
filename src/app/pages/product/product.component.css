@@ -12,10 +12,11 @@
     border-style: solid;
     border-radius: 0.5rem;
     width: 50rem;
-    height: 25rem;
+    height: 40rem;
     margin-right: 1rem;
     display: flex;
     flex-direction: column;
+    
 }
 
 .product-header {
@@ -42,11 +43,18 @@
 }
 
 .custom-button {
-    background-color: #77a6da !important; 
+    background-color: #ECE6F0 !important; 
     transition: background-color 1s;
+    width: 10rem; 
+    height: 3rem; 
+    align-self: flex-end;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: auto;
+    border: 1px solid black;
 }
 
 .custom-button:hover {
-    background-color: #558cb3;
+    background-color: #D6CFDB;
 }
 
