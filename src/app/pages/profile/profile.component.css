@@ -1,0 +1,46 @@
+.profile-header { 
+    margin-top: 2rem;  
+    margin-bottom: 2rem;  
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.small-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin: 1rem;
+}
+
+.small-card-item {
+    border-color: #ECE6F0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    width: 50rem;
+    height: 20rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+.small-card-image {
+    width: 24rem;
+    height: 10rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    padding: 1rem;
+    align-items: center;
+    border-radius: 1.5rem;
+}
+
+.content {
+    margin-left: 1.5rem;
+    text-align: center;
+    font-weight: bolder;
+}

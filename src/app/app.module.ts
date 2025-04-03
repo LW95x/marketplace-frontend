@@ -12,6 +12,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './pages/product/product.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProductComponent } from './pages/product/product.component';
     HeaderComponent,
     ProductsComponent,
     FooterComponent,
-    ProductComponent
+    ProductComponent,
+    ProfileComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
