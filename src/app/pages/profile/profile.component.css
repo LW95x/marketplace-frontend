@@ -1,6 +1,6 @@
 .profile-header { 
     margin-top: 2rem;  
-    margin-bottom: 2rem;  
+    margin-bottom: 5rem;  
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 48px;
@@ -20,8 +20,8 @@
     border-width: 1px;
     border-style: solid;
     border-radius: 0.5rem;
-    width: 50rem;
-    height: 20rem;
+    width: 20rem;
+    height: 12rem;
     margin-right: 1rem;
     display: flex;
     flex-direction: column;
@@ -40,7 +40,12 @@
 }
 
 .content {
-    margin-left: 1.5rem;
+    margin-top: 1rem;
     text-align: center;
     font-weight: bolder;
+}
+
+.small-card-item:hover {
+    background-color: #D6CFDB;
+    cursor: pointer;
 }
