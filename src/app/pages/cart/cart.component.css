@@ -53,3 +53,47 @@
     margin-left: auto;
     margin-right: 15rem;
 }
+
+.custom-button {
+    background-color: #ECE6F0 !important; 
+    transition: background-color 1s;
+    width: 10rem; 
+    height: 3rem; 
+    align-self: flex-end;
+    margin-right: 15rem;
+    margin-bottom: 1rem;
+    margin-top: auto;
+    border: 1px solid #ECE6F0;
+    border-radius: 1rem;
+}
+
+.custom-button:hover, .custom-button-del:hover {
+    background-color: #D6CFDB;
+}
+
+.custom-button-del {
+    background-color: #ECE6F0 !important; 
+    transition: background-color 1s;
+    width: 10rem; 
+    height: 2rem; 
+    align-self: flex-end;
+    margin-top: 0.5rem;
+    border: 1px solid #ECE6F0;
+    border-radius: 1rem;
+}
+
+.quantity {
+    width: 4rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 1rem;
+    border: 1px solid #ECE6F0;
+    font-weight: bold;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+  }
+  
