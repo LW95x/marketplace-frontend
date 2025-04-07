@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { SellComponent } from './pages/sell/sell.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     ProductComponent,
     ProfileComponent,
-    CartComponent
+    CartComponent,
+    SellComponent
   ],
   imports: [
     BrowserModule,
