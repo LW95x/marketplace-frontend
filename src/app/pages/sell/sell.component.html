@@ -13,7 +13,39 @@
   <input type="text" id="productName" name="productName">
 
   <label for="productName">Quantity</label>
+  <input type="number" id="productName" name="productName">
+
+
+    <label for="category">Category:</label>
+    <select id="category" [(ngModel)]="selectedCategory">
+      <option value="" disabled>Select a category</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+
+    <label for="condition">Condition:</label>
+    <select id="condition" [(ngModel)]="selectedCondition">
+      <option value="" disabled>Select a condition</option>
+      <option *ngFor="let condition of conditions" [value]="condition">{{ condition }}</option>
+    </select>
+
+
+  <label for="productName">Photos</label>
   <input type="text" id="productName" name="productName">
+
+  <label for="deliveryFee">Delivery Fee</label>
+  <input 
+    type="text" 
+    id="deliveryFee" 
+    name="deliveryFee" 
+    [value]="formattedValue" 
+    (input)="formatCurrency($event)"
+  >
+
+  <label for="return">Do you want to allow returns?</label>
+    <select id="return" [(ngModel)]="selectedReturn">
+      <option value="" disabled>Select an option</option>
+      <option *ngFor="let returnOption of returns" [value]="returnOption">{{ returnOption }}</option>
+    </select>
 
   <button mat-flat-button class="custom-button">List Product</button>
   </form>
