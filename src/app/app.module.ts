@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { SellComponent } from './pages/sell/sell.component';
+import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SellComponent } from './pages/sell/sell.component';
     ProductComponent,
     ProfileComponent,
     CartComponent,
-    SellComponent
+    SellComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,

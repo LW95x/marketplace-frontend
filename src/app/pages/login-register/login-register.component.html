@@ -1,0 +1,38 @@
+<div>
+    <div>
+      <h1 class="login-header">Login/Register</h1>
+    </div>
+    <div class="buttons">
+        <button (click)="showLogin()" mat-flat-button class="top-buttons" [ngClass]="{'active-button': activeTab === 'login'}">Login</button>
+        <button (click)="showRegister()" mat-flat-button class="top-buttons" [ngClass]="{'active-button': activeTab === 'register'}">Register</button>
+    </div>
+    <div *ngIf="activeTab === 'login'" class="login-card">
+        <form class="login-form">
+            <label>Email</label>
+            <input type="email" id="login-email" name="email">
+
+            <label>Password</label>
+            <input type="password" id="password" name="password">
+        </form>
+        <button mat-flat-button class="login-button">Login</button>
+        <a href="" style="margin-top: 1rem;">Forgot password?</a>
+    </div>
+
+    <div *ngIf="activeTab === 'register'" class="register-card">
+        <form class="register-form">
+            <label>Email</label>
+            <input type="email" id="register-email" name="email">
+
+            <label>Username</label>
+            <input type="text" id="email" name="email">
+
+            <label>Password</label>
+            <input type="password" id="password" name="password">
+
+            <label>Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password">
+        </form>
+        <button mat-flat-button class="login-button">Register</button>
+    </div>
+
+</div>

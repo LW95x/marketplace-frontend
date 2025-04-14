@@ -6,6 +6,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { SellComponent } from './pages/sell/sell.component';
+import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'cart', component: CartComponent },
   { path: 'sell', component: SellComponent },
+  { path: 'login', component: LoginRegisterComponent },
 ];
 
 @NgModule({
