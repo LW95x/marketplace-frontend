@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { SellComponent } from './pages/sell/sell.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
+import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'sell', component: SellComponent },
   { path: 'login', component: LoginRegisterComponent },
+  { path: 'reset-password', component: PasswordResetComponent },
 ];
 
 @NgModule({

@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { SellComponent } from './pages/sell/sell.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
+import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
     ProfileComponent,
     CartComponent,
     SellComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
