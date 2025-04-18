@@ -42,3 +42,46 @@
     font-weight: bold;
     font-size: 20px;
   }
+
+  .preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem; 
+    overflow-x: auto; 
+    padding: 1rem 0;
+    max-width: 80%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    border-radius: 1rem;
+  }
+
+  .preview-item {
+    position: relative;
+  }
+
+  .image-preview {
+    border-radius: 1rem;
+    height: auto;
+    width: 15rem;
+    max-width: 20rem;
+    max-height: 20rem;
+  }
+
+  .preview-item button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .preview-item button:hover {
+    background-color: #D6CFDB;
+}

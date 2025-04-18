@@ -10,8 +10,8 @@
   <textarea id="productDesc" class="product-description" placeholder="Enter product description..."></textarea>
 
   <label for="productName">Price</label>
-  <input type="text" id="productPrice" name="productPrice" [value]="formattedValue" 
-  (input)="formatCurrency($event)">
+  <input type="text" id="productPrice" name="productPrice" [value]="formattedProductPrice" 
+  (input)="formatProductPrice($event)">
 
   <label for="productName">Quantity</label>
   <input type="number" id="productQuantity" name="productQuantity">
@@ -31,15 +31,22 @@
 
 
   <label for="productImages">Photos</label>
-  <input type="file" id="productImages" name="productImages"  accept="image/*">
+  <input type="file" id="productImages" name="productImages" accept="image/*" multiple (change)="onImageSelection($event)">
+ 
+  <div *ngIf="imagePreviews.length > 0" class="preview-container">
+    <div *ngFor="let img of imagePreviews; let i = index" class="preview-item">
+      <img [src]="img" alt="Image Preview" class="image-preview" />
+      <button type="button" (click)="removeImage(i)">X</button>
+    </div> 
+  </div>
 
   <label for="deliveryFee">Delivery Fee</label>
   <input 
     type="text" 
     id="deliveryFee" 
     name="deliveryFee" 
-    [value]="formattedValue" 
-    (input)="formatCurrency($event)"
+    [value]="formattedDeliveryFee" 
+    (input)="formatDeliveryFee($event)"
   >
 
   <label for="return">Do you want to allow returns?</label>
