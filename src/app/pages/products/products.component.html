@@ -17,10 +17,11 @@
     <button mat-menu-item>Furniture</button>
     <button mat-menu-item>Sports</button>
     <button mat-menu-item>Clothing</button>
+    <button mat-menu-item>Food & Drink</button>
   </mat-menu>
 </div>
   <div class="small-deals">
-    <div class="small-deal-item">
+    <div *ngFor="let product of products" class="small-deal-item">
       <a href="product" style="text-decoration: none; color: inherit;">
       <img
         src="https://placehold.co/200x200"
@@ -28,43 +29,10 @@
         class="small-product-image"
       />
       <div class="content">
-        <h3>Text</h3>
-        <p><strong>£50</strong></p>
+        <h3>{{ product.title }}</h3>
+        <p><strong>£{{  product.price }}</strong></p>
       </div>
     </a>
-    </div>
-    <div class="small-deal-item">
-      <img
-        src="https://placehold.co/200x200"
-        alt="Product Image"
-        class="small-product-image"
-      />
-      <div class="content">
-        <h3>Text</h3>
-        <p><strong>£50</strong></p>
-      </div>
-    </div>
-    <div class="small-deal-item">
-      <img
-        src="https://placehold.co/200x200"
-        alt="Product Image"
-        class="small-product-image"
-      />
-      <div class="content">
-        <h3>Text</h3>
-        <p><strong>£50</strong></p>
-      </div>
-    </div>
-    <div class="small-deal-item">
-      <img
-        src="https://placehold.co/200x200"
-        alt="Product Image"
-        class="small-product-image"
-      />
-      <div class="content">
-        <h3>Text</h3>
-        <p><strong>£50</strong></p>
-      </div>
     </div>
   </div>
 </div>

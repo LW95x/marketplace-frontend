@@ -3,36 +3,37 @@
       <h1 class="login-header">Login/Register</h1>
     </div>
     <div class="buttons">
-        <button (click)="showLogin()" mat-flat-button class="top-buttons" [ngClass]="{'active-button': activeTab === 'login'}">Login</button>
-        <button (click)="showRegister()" mat-flat-button class="top-buttons" [ngClass]="{'active-button': activeTab === 'register'}">Register</button>
+        <button (click)="showLogin()" type="button" mat-flat-button class="top-buttons" [ngClass]="{'active-button': activeTab === 'login'}">Login</button>
+        <button (click)="showRegister()" type="button" mat-flat-button class="top-buttons" [ngClass]="{'active-button': activeTab === 'register'}">Register</button>
     </div>
     <div *ngIf="activeTab === 'login'" class="login-card">
-        <form class="login-form">
-            <label>Email</label>
-            <input type="email" id="login-email" name="email">
+        <form (ngSubmit)="login()" class="login-form">
+            <label>Username</label>
+            <input [(ngModel)]="userName" type="text" id="login-username" name="userName" placeholder="Username" required>
 
             <label>Password</label>
-            <input type="password" id="password" name="password">
+            <input [(ngModel)]="password" type="password" id="login-password" name="password" placeholder="Password" required>
+            <button mat-flat-button class="login-button" type="submit">Login</button>
         </form>
-        <button mat-flat-button class="login-button">Login</button>
         <a href="reset-password" style="margin-top: 1rem;">Forgot password?</a>
+        <div *ngIf="loginError">{{ loginError }}</div>
     </div>
 
     <div *ngIf="activeTab === 'register'" class="register-card">
         <form class="register-form">
             <label>Email</label>
-            <input type="email" id="register-email" name="email">
+            <input type="email" id="register-email" name="register-email">
 
             <label>Username</label>
-            <input type="text" id="email" name="email">
+            <input type="text" id="register-username" name="register-username">
 
             <label>Password</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="register-password" name="register-password">
 
             <label>Confirm Password</label>
             <input type="password" id="confirm-password" name="confirm-password">
+            <button mat-flat-button class="login-button" type="button">Register</button>
         </form>
-        <button mat-flat-button class="login-button">Register</button>
     </div>
 
 </div>
