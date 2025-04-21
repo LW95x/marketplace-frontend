@@ -30,9 +30,15 @@
       />
       <div class="content">
         <h3>{{ product.title }}</h3>
+        <p> {{ product.description }}</p>
         <p><strong>£{{  product.price }}</strong></p>
+        <p> Quantity: {{ product.quantity }} </p>
+        <p> <b>Seller:</b> {{ product.sellerName }} </p>
+        <p> Category: {{ product.category }} </p>
+      
       </div>
     </a>
     </div>
+    <p *ngFor="let userProduct of userProducts"> {{ userProduct.title }}</p>
   </div>
 </div>

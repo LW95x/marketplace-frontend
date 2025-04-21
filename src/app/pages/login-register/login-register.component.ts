@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { DeCodedJWT } from 'src/app/models/jwt.model';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login-register',
@@ -22,6 +24,12 @@ export class LoginRegisterComponent {
       next: ( jwt: string) => {
         localStorage.setItem('token', jwt);
         this.loginError = null;
+        const decoded: DeCodedJWT = jwtDecode(jwt);
+
+        localStorage.setItem('email', decoded.email);
+        localStorage.setItem('username', decoded.user_name);
+        localStorage.setItem('userId', decoded.sub);
+
         console.log('The login was successful');
         this.router.navigate(['']);
       },
