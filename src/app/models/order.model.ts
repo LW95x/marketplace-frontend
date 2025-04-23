@@ -10,3 +10,11 @@ export interface Order {
   address: string;
   buyerId: string;
 }
+
+export interface CreateOrder {
+  address: string;
+}
+
+export interface UpdateOrder {
+  
+}

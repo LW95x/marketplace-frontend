@@ -22,7 +22,7 @@
 </div>
   <div class="small-deals">
     <div *ngFor="let product of products" class="small-deal-item">
-      <a href="product" style="text-decoration: none; color: inherit;">
+      <a [routerLink]="['/product', product.productId]" style="text-decoration: none; color: inherit;">
       <img
         src="https://placehold.co/200x200"
         alt="Product Image"

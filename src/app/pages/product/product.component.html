@@ -1,8 +1,8 @@
 <div>
-  <div>
-    <h1 class="product-header">Product Name</h1>
+  <div *ngIf="product">
+    <h1 class="product-header">{{ product.title }}</h1>
   </div>
-  <div class="big-deals">
+  <div *ngIf="product" class="big-deals">
     <div class="big-deal-item">
       <img
         src="https://placehold.co/200x200"
@@ -10,8 +10,12 @@
         class="big-product-image"
       />
       <div class="content">
-        <h3 style="font-weight: bold;">Text</h3>
-        <p>£50</p>
+        <h3 style="font-weight: bold;">{{ product.title }}</h3>
+        <p>{{ product.description }}</p>
+        <p>£{{ product.price }}</p>
+        <p> Quantity: {{ product.quantity }} </p>
+        <p> <b>Seller:</b> {{ product.sellerName }} </p>
+        <p> Category: {{ product.category }} </p>
       </div>
       <button mat-flat-button class="custom-button">Add To Basket</button>
     </div>

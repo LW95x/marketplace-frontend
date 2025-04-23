@@ -18,3 +18,9 @@ export interface CreateProduct {
   category: string;
   imageUrls: string[];
 }
+
+export interface UpdateProduct {
+  path: string;
+  op: 'replace';
+  value: any;
+}

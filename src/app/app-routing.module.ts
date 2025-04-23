@@ -12,7 +12,7 @@ import { PasswordResetComponent } from './pages/password-reset/password-reset.co
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'product', component: ProductComponent },
+  { path: 'product/:id', component: ProductComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'cart', component: CartComponent },
   { path: 'sell', component: SellComponent },
