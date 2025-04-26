@@ -16,5 +16,7 @@ export interface CreateOrder {
 }
 
 export interface UpdateOrder {
-  
+  path: string;
+  op: 'replace';
+  value: any;
 }

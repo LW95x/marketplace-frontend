@@ -6,3 +6,9 @@ export interface Cart {
   buyerId: string;
   items: CartItem[];
 }
+
+export interface UpdateCart {
+  path: string;
+  op: 'replace';
+  value: any;
+}
