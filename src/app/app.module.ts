@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { SellComponent } from './pages/sell/sell.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
+import { UserProductsComponent } from './pages/user-products/user-products.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { PasswordResetComponent } from './pages/password-reset/password-reset.co
     CartComponent,
     SellComponent,
     LoginRegisterComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    UserProductsComponent
   ],
   imports: [
     BrowserModule,

@@ -26,4 +26,8 @@ export class OrdersService {
   updateOrder(user_id: string, order_id: string, jsonPatchDocument: UpdateOrder[]): Observable<void> {
     return this.http.patch<void>(`${this.apiUrl}/users/${user_id}/orders/${order_id}`, jsonPatchDocument);
   }
+
+  deleteOrder(user_id: string, order_id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/users/${user_id}/orders/${order_id}`);
+  }
 }

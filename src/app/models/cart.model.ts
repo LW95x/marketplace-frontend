@@ -7,6 +7,11 @@ export interface Cart {
   items: CartItem[];
 }
 
+export interface CreateCartItem {
+  productId: string;
+  quantity: number;
+}
+
 export interface UpdateCart {
   path: string;
   op: 'replace';

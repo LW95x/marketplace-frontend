@@ -23,7 +23,7 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.apiUrl}/users/${user_id}/products`);
   }
 
-  getSingleProduct(user_id: string, product_id: string): Observable<Product> {
+  getSingleUserProduct(user_id: string, product_id: string): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/users/${user_id}/products/${product_id}`);
   }
 

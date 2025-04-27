@@ -8,6 +8,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { SellComponent } from './pages/sell/sell.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
+import { UserProductsComponent } from './pages/user-products/user-products.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'sell', component: SellComponent },
   { path: 'login', component: LoginRegisterComponent },
   { path: 'reset-password', component: PasswordResetComponent },
+  { path: 'user-products', component: UserProductsComponent },
 ];
 
 @NgModule({

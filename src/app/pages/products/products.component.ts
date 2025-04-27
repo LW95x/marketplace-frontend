@@ -16,7 +16,6 @@ export class ProductsComponent {
 
   ngOnInit() {
     this.loadAllProducts();
-    this.loadAllUserProducts();
   }
 
   loadAllProducts(): void {
@@ -31,22 +30,5 @@ export class ProductsComponent {
           console.error(err);
       }
     })
-  }
-
-  loadAllUserProducts(): void {
-    const userId = localStorage.getItem('userId');
-    
-    if (userId) {
-      this.productService.getProductsByUserId(userId).subscribe({
-        next: (data) => {
-          this.userProducts = data;
-        },
-        error: (err) => {
-          this.productError =
-          'Products could not be found.';
-          console.error(err);
-        }
-      })
-    }
   }
 }

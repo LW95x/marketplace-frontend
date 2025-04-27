@@ -1,0 +1,7 @@
+<p>user-products works!</p>
+<div *ngFor="let product of userProducts">
+    <p>{{ product.title }} </p>
+</div>
+<div *ngIf="userProduct && userProduct.title">
+    <p>{{ userProduct.title }}</p>
+</div>

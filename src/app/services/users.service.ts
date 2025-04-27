@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { CreateUser, UpdateUser, User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +17,26 @@ export class UsersService {
 
   getSingleUser(user_id: string): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/users/${user_id}`);
+  }
+
+  addNewUser(user: CreateUser): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/users`, user);
+  }
+
+  updateUser(user_id: string, jsonPatchDocument: UpdateUser[]): Observable<void> {
+    return this.http.patch<void>(`${this.apiUrl}/users/${user_id}`, jsonPatchDocument);
+  }
+
+  updateUserPassword(user_id: string, currentPassword: string, newPassword: string): Observable<void> {
+    const body = {
+      currentPassword: currentPassword,
+      newPassword: newPassword
+    };
+
+    return this.http.post<void>(`${this.apiUrl}/users/${user_id}/change-password`, body);
+  }
+
+  deleteUser(user_id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/users/${user_id}`);
   }
 }
