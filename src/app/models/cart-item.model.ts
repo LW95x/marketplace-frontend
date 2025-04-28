@@ -4,4 +4,9 @@ export interface CartItem {
   totalPrice: number;
   price: number;
   productId: string;
+  productName?: string;
+  description?: string;
+  imageUrls?: string[];
+  sellerName?: string;
+  category?: string;
 }

@@ -10,6 +10,7 @@
           <div class="text-content">
             <h1 style="margin-top: 1rem">Title</h1>
             <p>Item Description</p>
+            <p *ngFor="let cartItem of userCart?.items">{{ cartItem.quantity }}</p>
             <div class="quantity-container">
               <button mat-icon-button color="primary" (click)="decrement()">
                 <mat-icon style="font-size: 20px;">remove</mat-icon>

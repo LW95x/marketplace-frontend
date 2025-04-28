@@ -38,7 +38,7 @@ export class UserProductsComponent {
 
     loadUserProduct(): void {
       const userId = localStorage.getItem('userId');
-      const productId = '71da0c50-80c4-42bb-8db1-22527e5e19d8'; // Just for testing purposes, replace from parametric endpoint for singular user product.
+      const productId = '015ff32c-1b9b-4292-98de-08dd4ee7e16e'; // Just for testing purposes, replace from parametric endpoint for singular user product.
 
       if (userId) {
         // Not working because I'm passing in the wrong user for testing purposes, needs to be product related to that user.
