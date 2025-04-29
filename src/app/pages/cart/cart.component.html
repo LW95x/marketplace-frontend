@@ -1,6 +1,6 @@
 <div class="cart-container">
     <h1 class="cart-header">Shopping Cart</h1>
-    <div class="cart-card">
+    <div *ngFor="let cartItem of userCart?.items" class="cart-card">
         <div class="cart-card-item">
             <img
             src="https://placehold.co/200x200"
@@ -8,45 +8,25 @@
             class="cart-card-image"
           />
           <div class="text-content">
-            <h1 style="margin-top: 1rem">Title</h1>
-            <p>Item Description</p>
-            <p *ngFor="let cartItem of userCart?.items">{{ cartItem.quantity }}</p>
+            <h1 style="margin-top: 1rem">{{ cartItem.productName}}</h1>
+            Description: <p>{{ cartItem.description }}</p>
+            Quantity: <p>{{ cartItem.quantity }}</p>
+            Seller: <p>{{ cartItem.sellerName }}</p>
+            Category: <p>{{ cartItem.category }}</p>
             <div class="quantity-container">
               <button mat-icon-button color="primary" (click)="decrement()">
                 <mat-icon style="font-size: 20px;">remove</mat-icon>
               </button>
-                <input matInput type="number" [(ngModel)]="quantity" class="quantity">
-              <button mat-icon-button color="primary"(click)="increment()">
+                <input matInput type="number" [(ngModel)]="cartItem.quantity" class="quantity">
+              <button mat-icon-button color="primary" (click)="increment()">
                 <mat-icon style="font-size: 20px;">add</mat-icon>
               </button>
             </div>
             <button mat-flat-button class="custom-button-del">Delete Item</button>
           </div>
-          <h2 style="margin-top: 1rem; margin-left: auto; margin-right: 2rem;">Unit Price: £50</h2>
-        </div>
-        <div class="cart-card-item">
-            <img
-            src="https://placehold.co/200x200"
-            alt="Product Image"
-            class="cart-card-image"
-          />
-          <div class="text-content">
-          <h1 style="margin-top: 1rem">Title</h1>
-          <p>Item Description</p>
-          <div class="quantity-container">
-              <button mat-icon-button color="primary" (click)="decrement()">
-                <mat-icon style="font-size: 20px;">remove</mat-icon>
-              </button>
-                <input matInput type="number" [(ngModel)]="quantity" class="quantity">
-              <button mat-icon-button color="primary"(click)="increment()">
-                <mat-icon style="font-size: 20px;">add</mat-icon>
-              </button>
-            </div>
-          <button mat-flat-button class="custom-button-del">Delete Item</button>
-        </div>
-        <h2 style="margin-top: 1rem; margin-left: auto; margin-right: 2rem;">Unit Price: £50</h2>
+          <h2 style="margin-top: 1rem; margin-left: auto; margin-right: 2rem;">Unit Price: £{{cartItem.price}}</h2>
         </div>
     </div>
-    <h1 class="total-price">Total Price: £100</h1>
+    <h1 class="total-price">Total Price: £{{ userCart?.totalPrice }}</h1>
     <button mat-flat-button class="custom-button">Checkout</button>
 </div>

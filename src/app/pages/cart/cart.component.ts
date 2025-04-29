@@ -30,7 +30,7 @@ export class CartComponent {
           this.userCart.items.forEach(item => {
             this.productService.getProductById(item.productId).subscribe({
               next: (product) => {
-                item.productName = product.sellerName;
+                item.productName = product.title;
                 item.description = product.description;
                 item.category = product.category;
                 item.imageUrls = product.imageUrls;
