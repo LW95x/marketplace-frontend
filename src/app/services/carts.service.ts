@@ -24,8 +24,8 @@ export class CartsService {
     return this.http.post<CartItem>(`${this.apiUrl}/users/${user_id}/cart`, cartItem);
   }
 
-  updateShoppingCartItemQuantity(user_id: string, cart_item_id: string, jsonPatchDocument: UpdateCart[]): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}/users/${user_id}/cart/${cart_item_id}`, jsonPatchDocument);
+  updateShoppingCartItemQuantity(user_id: string, cart_item_id: string, newQuantity: number, addQuantity = false): Observable<void> {
+    return this.http.patch<void>(`${this.apiUrl}/users/${user_id}/cart/${cart_item_id}?newQuantity=${newQuantity}&addQuantity=${addQuantity}`, {});
   }
 
   deleteShoppingCartItem(user_id: string, cart_item_id: string): Observable<void> {

@@ -10,15 +10,14 @@
           <div class="text-content">
             <h1 style="margin-top: 1rem">{{ cartItem.productName}}</h1>
             Description: <p>{{ cartItem.description }}</p>
-            Quantity: <p>{{ cartItem.quantity }}</p>
             Seller: <p>{{ cartItem.sellerName }}</p>
             Category: <p>{{ cartItem.category }}</p>
             <div class="quantity-container">
-              <button mat-icon-button color="primary" (click)="decrement()">
+              <button mat-icon-button color="primary" (click)="decrement(cartItem)">
                 <mat-icon style="font-size: 20px;">remove</mat-icon>
               </button>
                 <input matInput type="number" [(ngModel)]="cartItem.quantity" class="quantity">
-              <button mat-icon-button color="primary" (click)="increment()">
+              <button mat-icon-button color="primary" (click)="increment(cartItem)">
                 <mat-icon style="font-size: 20px;">add</mat-icon>
               </button>
             </div>
