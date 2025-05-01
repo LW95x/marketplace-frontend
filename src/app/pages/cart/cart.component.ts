@@ -62,7 +62,12 @@ export class CartComponent {
 
     if (userId && cartItemId) {
       this.cartService
-        .updateShoppingCartItemQuantity(userId, cartItemId, cartItem.quantity, addQuantity)
+        .updateShoppingCartItemQuantity(
+          userId,
+          cartItemId,
+          cartItem.quantity,
+          addQuantity
+        )
         .subscribe({
           next: () => {
             console.log('Cart Item quantity successfully updated.');
@@ -71,7 +76,8 @@ export class CartComponent {
             cartItem.quantity = previousQuantity;
 
             if (this.userCart) {
-              const difference = cartItem.price * (cartItem.quantity - previousQuantity);
+              const difference =
+                cartItem.price * (cartItem.quantity - previousQuantity);
               this.userCart.totalPrice -= difference;
 
               console.error('Failed to update Cart Item quantity.', err);
@@ -102,6 +108,29 @@ export class CartComponent {
       }
 
       this.editShoppingCartItemQuantity(cartItem, previousQuantity, false);
+    }
+  }
+
+  handleDeletion(cartItem: CartItem): void {
+    const userId = localStorage.getItem('userId');
+    const cartItemId = cartItem.cartItemId;
+
+    if (userId && cartItemId) {
+      this.cartService.deleteShoppingCartItem(userId, cartItemId).subscribe({
+        next: () => {
+          if (this.userCart) {
+            this.userCart.items = this.userCart.items.filter(
+              (item) => item.cartItemId !== cartItemId
+            );
+
+            this.userCart.totalPrice -= cartItem.totalPrice
+          }
+          console.log('Cart Item was succesfully deleted.');
+        },
+        error: (err) => {
+          console.error('Failed to delete Cart Item', err);
+        },
+      });
     }
   }
 }

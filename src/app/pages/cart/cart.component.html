@@ -21,7 +21,7 @@
                 <mat-icon style="font-size: 20px;">add</mat-icon>
               </button>
             </div>
-            <button mat-flat-button class="custom-button-del">Delete Item</button>
+            <button mat-flat-button class="custom-button-del" (click)="handleDeletion(cartItem)">Delete Item</button>
           </div>
           <h2 style="margin-top: 1rem; margin-left: auto; margin-right: 2rem;">Unit Price: £{{cartItem.price}}</h2>
         </div>
