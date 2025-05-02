@@ -17,7 +17,17 @@
         <p> <b>Seller:</b> {{ product.sellerName }} </p>
         <p> Category: {{ product.category }} </p>
       </div>
-      <button mat-flat-button class="custom-button">Add To Basket</button>
+      <div class="quantity-container">
+        <button mat-icon-button color="primary" (click)="decrement()">
+          <mat-icon style="font-size: 20px;">remove</mat-icon>
+        </button>
+          <input matInput type="number" [(ngModel)]="quantity" (ngModelChange)="onQuantityChange($event)" [min]="1"
+          [max]="product.quantity" class="quantity">
+        <button mat-icon-button color="primary" (click)="increment()">
+          <mat-icon style="font-size: 20px;">add</mat-icon>
+        </button>
+      </div>
+      <button mat-flat-button class="custom-button" (click)="handleAddToCart(product, quantity)">Add To Basket</button>
     </div>
   </div>
 </div>

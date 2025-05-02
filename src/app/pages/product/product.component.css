@@ -58,3 +58,18 @@
     background-color: #D6CFDB;
 }
 
+.quantity {
+    width: 4rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 1rem;
+    border: 1px solid #ECE6F0;
+    font-weight: bold;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+  }
+
