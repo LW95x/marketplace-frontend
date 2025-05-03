@@ -1,0 +1,28 @@
+<div class="order-container">
+    <h1 class="order-header">Orders</h1>
+    <div *ngFor="let order of orders" class="order-card">
+        <div class="order-card-item">
+            <img
+            src="https://placehold.co/200x200"
+            alt="Product Image"
+            class="order-card-image"
+          />
+          <div class="text-content">
+            Delivery Address: <p>{{ order.address }}</p>
+            Date of Order:<p>{{ order.date }}</p>
+            Order Status:<p>{{ order.status }}</p>
+            Order Total Price:<p>{{ order.totalPrice }}</p>
+            ===
+            <div *ngFor="let item of order.orderItems" class="order-card-item">
+                Title: <p>{{item.productTitle}}</p>
+                Category: {{ item.productCategory}}
+                Description: {{ item.productDescription}}
+                Seller Name: {{item.productSellerName}}
+                Price: <p>{{item.price}}</p>
+                Total Price: <p>{{item.totalPrice}}</p>
+                Quantity: <p>{{item.quantity}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

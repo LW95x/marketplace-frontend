@@ -24,6 +24,7 @@ import { SellComponent } from './pages/sell/sell.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { UserProductsComponent } from './pages/user-products/user-products.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { UserProductsComponent } from './pages/user-products/user-products.compo
     SellComponent,
     LoginRegisterComponent,
     PasswordResetComponent,
-    UserProductsComponent
+    UserProductsComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
