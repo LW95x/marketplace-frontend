@@ -1,7 +1,23 @@
-<p>user-products works!</p>
-<div *ngFor="let product of userProducts">
-    <p>{{ product.title }} </p>
-</div>
-<div *ngIf="userProduct && userProduct.title">
-    SINGLE product<p>{{ userProduct.title }}</p>
+<div class="products-container">
+    <h1 class="products-header">Your Listings</h1>
+    <div *ngFor="let product of userProducts" class="products-card">
+        <div class="products-card-item">
+            <img
+            src="https://placehold.co/200x200"
+            alt="Product Image"
+            class="products-card-image"
+          />
+          <div class="text-content">
+            <h1 style="margin-top: 1rem">{{ product.title }}</h1>
+            Description: <p>{{ product.description }}</p>
+            Seller: <p>{{ product.sellerName }}</p>
+            Category: <p>{{ product.category }}</p>
+            Unit Price: <p>{{product.price}}</p>
+            Quantity: <p>{{product.quantity}}</p>
+            Image URLs: {{product.imageUrls}}
+            <button mat-flat-button class="custom-button-del" (click)="handleDeletion(product)">Delete Item</button>
+          </div>
+        </div>
+    </div>
+    <button mat-flat-button class="custom-button">Edit Product</button>
 </div>

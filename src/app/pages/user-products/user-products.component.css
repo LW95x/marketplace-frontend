@@ -1,0 +1,78 @@
+.products-header { 
+    margin-top: 2rem;  
+    margin-bottom: 2rem;  
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    align-self: center;
+}
+
+.products-card {
+    width: 80%;
+    padding: 1rem;
+    max-width: 80%;
+    border-color: #ECE6F0;
+    align-self: center;
+}
+
+.products-card-item {
+    border-color: #ECE6F0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.products-card-image {
+    width: 24rem;
+    height: 10rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    padding: 1rem;
+    align-items: center;
+    border-radius: 1.5rem;
+}
+
+.products-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-button {
+    background-color: #ECE6F0 !important; 
+    transition: background-color 1s;
+    width: 10rem; 
+    height: 3rem; 
+    align-self: flex-end;
+    margin-right: 12rem;
+    margin-bottom: 1rem;
+    margin-top: auto;
+    border: 1px solid #ECE6F0;
+    border-radius: 1rem;
+}
+
+.custom-button:hover, .custom-button-del:hover {
+    background-color: #D6CFDB;
+}
+
+.custom-button-del {
+    background-color: #ECE6F0 !important; 
+    transition: background-color 1s;
+    width: 10rem; 
+    height: 2rem; 
+    align-self: flex-end;
+    margin-top: 0.5rem;
+    border: 1px solid #ECE6F0;
+    border-radius: 1rem;
+}

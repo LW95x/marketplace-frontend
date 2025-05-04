@@ -5,54 +5,51 @@ import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-user-products',
   templateUrl: './user-products.component.html',
-  styleUrls: ['./user-products.component.css']
+  styleUrls: ['./user-products.component.css'],
 })
 export class UserProductsComponent {
-    userProducts: Product[] = [];
-    userProduct: Product = {} as Product;
-    productError: string | null = null;
+  userProducts: Product[] = [];
+  productError: string | null = null;
 
-    constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService) {}
 
-    ngOnInit() {
-      this.loadAllUserProducts();
-      this.loadUserProduct();
+  ngOnInit() {
+    this.loadAllUserProducts();
+  }
+
+  loadAllUserProducts(): void {
+    const userId = localStorage.getItem('userId');
+
+    if (userId) {
+      this.productService.getProductsByUserId(userId).subscribe({
+        next: (data) => {
+          this.userProducts = data;
+        },
+        error: (err) => {
+          this.productError = 'Products could not be found.';
+          console.error(err);
+        },
+      });
     }
+  }
 
-    loadAllUserProducts(): void {
-      const userId = localStorage.getItem('userId');
-      
-      if (userId) {
-        this.productService.getProductsByUserId(userId).subscribe({
-          next: (data) => {
-            this.userProducts = data;
-          },
-          error: (err) => {
-            this.productError =
-            'Products could not be found.';
-            console.error(err);
+  handleDeletion(product: Product): void {
+    const userId = localStorage.getItem('userId');
+    const productId = product.productId;
+
+    if (userId && productId) {
+      this.productService.deleteProduct(userId, productId).subscribe({
+        next: () => {
+          if (this.userProducts) {
+            this.userProducts = this.userProducts.filter((product) => product.productId !== productId);
           }
-        })
-      }
-    }
 
-    loadUserProduct(): void {
-      const userId = localStorage.getItem('userId');
-      const productId = '015ff32c-1b9b-4292-98de-08dd4ee7e16e'; // Just for testing purposes, replace from parametric endpoint for singular user product.
-
-      if (userId) {
-        // Not working because I'm passing in the wrong user for testing purposes, needs to be product related to that user.
-        this.productService.getSingleUserProduct(userId, productId).subscribe({
-          next: (data) => {
-            this.userProduct = data;
-            console.log(this.userProduct);
-          },
-          error: (err) => {
-            this.productError =
-              'User Product could not be found.';
-              console.error(err);
-          }
-        })
-      }
+          console.log('Product was succesfully deleted.');
+        },
+        error: (err) => {
+          console.error('Failed to delete product.', err);
+        },
+      });
     }
+  }
 }
