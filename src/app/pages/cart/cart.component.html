@@ -27,5 +27,5 @@
         </div>
     </div>
     <h1 class="total-price">Total Price: £{{ userCart?.totalPrice }}</h1>
-    <button mat-flat-button class="custom-button">Checkout</button>
+    <button mat-flat-button class="custom-button" [routerLink]="'/checkout'">Checkout</button>
 </div>

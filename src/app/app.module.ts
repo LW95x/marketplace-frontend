@@ -25,6 +25,12 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { UserProductsComponent } from './pages/user-products/user-products.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ChangeEmailComponent } from './pages/change-email/change-email.component';
+import { ChangeAvatarComponent } from './pages/change-avatar/change-avatar.component';
+import { SavedItemsComponent } from './pages/saved-items/saved-items.component';
+import { SoldItemsComponent } from './pages/sold-items/sold-items.component';
 
 
 @NgModule({
@@ -41,7 +47,13 @@ import { OrdersComponent } from './pages/orders/orders.component';
     LoginRegisterComponent,
     PasswordResetComponent,
     UserProductsComponent,
-    OrdersComponent
+    OrdersComponent,
+    CheckoutComponent,
+    ChangePasswordComponent,
+    ChangeEmailComponent,
+    ChangeAvatarComponent,
+    SavedItemsComponent,
+    SoldItemsComponent
   ],
   imports: [
     BrowserModule,

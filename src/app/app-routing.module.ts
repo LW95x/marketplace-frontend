@@ -10,6 +10,12 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { UserProductsComponent } from './pages/user-products/user-products.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ChangeEmailComponent } from './pages/change-email/change-email.component';
+import { ChangeAvatarComponent } from './pages/change-avatar/change-avatar.component';
+import { SavedItemsComponent } from './pages/saved-items/saved-items.component';
+import { SoldItemsComponent } from './pages/sold-items/sold-items.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +27,13 @@ const routes: Routes = [
   { path: 'login', component: LoginRegisterComponent },
   { path: 'reset-password', component: PasswordResetComponent },
   { path: 'user-products', component: UserProductsComponent },
-  { path: 'orders', component: OrdersComponent }
+  { path: 'orders', component: OrdersComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'change-email', component: ChangeEmailComponent },
+  { path: 'change-avatar', component: ChangeAvatarComponent },
+  { path: 'saved-items', component: SavedItemsComponent },
+  { path: 'sold-items', component: SoldItemsComponent }
 ];
 
 @NgModule({
