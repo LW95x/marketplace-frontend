@@ -23,17 +23,25 @@ export class UsersService {
     return this.http.post<User>(`${this.apiUrl}/users`, user);
   }
 
-  updateUser(user_id: string, jsonPatchDocument: UpdateUser[]): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}/users/${user_id}`, jsonPatchDocument);
+  updateUser(
+    user_id: string,
+    jsonPatchDocument: UpdateUser[]
+  ): Observable<void> {
+    return this.http.patch<void>(
+      `${this.apiUrl}/users/${user_id}`,
+      jsonPatchDocument
+    );
   }
 
-  updateUserPassword(user_id: string, currentPassword: string, newPassword: string): Observable<void> {
-    const body = {
-      currentPassword: currentPassword,
-      newPassword: newPassword
-    };
-
-    return this.http.post<void>(`${this.apiUrl}/users/${user_id}/change-password`, body);
+  updateUserPassword(
+    user_id: string,
+    currentPassword: string,
+    newPassword: string
+  ): Observable<void> {
+    return this.http.post<void>(
+      `${this.apiUrl}/users/${user_id}/change-password?currentPassword=${currentPassword}&newPassword=${newPassword}`,
+      {}
+    );
   }
 
   deleteUser(user_id: string): Observable<void> {
