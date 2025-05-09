@@ -12,7 +12,7 @@ export interface CreateUser {
 }
 
 export interface UpdateUser {
-    path: string;
-    op: 'replace';
-    value: any;
-  }
+  op: 'replace';
+  path: string;
+  value: any;
+}

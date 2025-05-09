@@ -29,7 +29,12 @@ export class UsersService {
   ): Observable<void> {
     return this.http.patch<void>(
       `${this.apiUrl}/users/${user_id}`,
-      jsonPatchDocument
+      jsonPatchDocument,
+      {
+        headers: {
+          'Content-Type': 'application/json-patch+json'
+        }
+      }
     );
   }
 

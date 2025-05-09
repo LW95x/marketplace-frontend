@@ -18,7 +18,10 @@ export class ChangePasswordComponent {
   ): void {
     const userId = localStorage.getItem('userId');
 
-    if (userId && this.currentPassword && this.newPassword) {
+    if (userId && 
+      this.currentPassword && 
+      this.newPassword &&
+      this.newPassword !== this.currentPassword) {
       this.userService
         .updateUserPassword(userId, currentPassword, newPassword)
         .subscribe({

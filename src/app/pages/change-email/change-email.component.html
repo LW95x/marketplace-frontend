@@ -1,1 +1,14 @@
-<p>change-email works!</p>
+<div>
+    <div>
+      <h1 class="change-email-header">Change Email Form</h1>
+    </div>
+    <form class="change-email-form" (ngSubmit)="sendEmailChangeRequest(newEmail)" #form="ngForm">
+    <label for="currentEmail">Current Email</label>
+    <input type="email" id="currentEmail" name="currentEmail" [(ngModel)]="currentEmail" style="width: 300px;" required>
+
+    <label for="newEmail">New Email</label>
+    <input type="email" id="newEmail" name="newEmail" [(ngModel)]="newEmail" style="width: 300px;" required>
+  
+    <button mat-flat-button class="custom-button" type="submit">Change Email Address</button>
+    </form>
+  </div>
