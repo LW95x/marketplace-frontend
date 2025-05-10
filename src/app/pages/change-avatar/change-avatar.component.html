@@ -1,1 +1,12 @@
-<p>change-avatar works!</p>
+<div>
+    <div>
+      <h1 class="change-avatar-header">Change Avatar Form</h1>
+    </div>
+    <form class="change-avatar-form" (ngSubmit)="sendAvatarChangeRequest()" #form="ngForm">
+
+    <label for="newAvatar">New Avatar</label>
+    <input type="file" id="newAvatar" name="newAvatar" accept="image/*" (change)="onFileSelect($event)" required>
+  
+    <button mat-flat-button class="custom-button" type="submit">Change Avatar</button>
+    </form>
+  </div>
