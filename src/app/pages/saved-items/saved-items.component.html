@@ -1,1 +1,24 @@
-<p>saved-items works!</p>
+<div class="saved-item-container">
+    <h1 class="saved-item-header">Saved Items</h1>
+    <div *ngFor="let savedItem of savedItems" class="saved-item-card">
+        <a [routerLink]="['/product', savedItem.productId]" style="text-decoration: none; color: inherit;">
+        <div class="saved-item-card-item">
+            <img
+            src="https://placehold.co/200x200"
+            alt="Product Image"
+            class="saved-item-card-image"
+          />
+          <div class="text-content">
+            <h1 style="margin-top: 1rem">{{ savedItem.title}}</h1>
+            Description: <p>{{ savedItem.description }}</p>
+            Seller: <p>{{ savedItem.sellerName }}</p>
+            Category: <p>{{ savedItem.category }}</p>
+          </div>
+          <h2 style="margin-top: 1rem; margin-left: auto; margin-right: 2rem;">Unit Price: £{{savedItem.price}}</h2>
+        </div>
+    </a>
+    <div style="display: flex; align-items: center;">
+    <button mat-flat-button class="custom-button" (click)="handleDeleteSavedItem(savedItem.productId);  $event.stopPropagation()">Delete Saved Item</button>
+    </div>
+    </div>
+</div>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { createUrlTreeFromSnapshot } from '@angular/router';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { Cart, UpdateCart } from 'src/app/models/cart.model';
 import { CartsService } from 'src/app/services/carts.service';

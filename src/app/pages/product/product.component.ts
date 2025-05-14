@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CreateCartItem } from 'src/app/models/cart.model';
 import { Product } from 'src/app/models/product.model';
+import { AddSavedItem } from 'src/app/models/saved-item.model';
 import { CartsService } from 'src/app/services/carts.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { SavedItemsService } from 'src/app/services/saved-items.service';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +20,8 @@ export class ProductComponent {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
-    private cartService: CartsService
+    private cartService: CartsService,
+    private savedItemService: SavedItemsService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +49,26 @@ export class ProductComponent {
           console.error('Failed to add product to shopping cart', err);
         },
       });
+    }
+  }
+
+  handleSavedItem(product: Product): void {
+    const userId = localStorage.getItem('userId');
+
+    if (userId && product) {
+      const addSavedItem: AddSavedItem = {
+      productId: product.productId,
+      userId: userId
+    }
+
+    this.savedItemService.addSavedItem(userId, addSavedItem).subscribe({
+      next: () => {
+        console.log('Product succesfully added to saved item list.');
+      },
+      error: (err) => {
+        console.error('Failed to add product to saved item list', err);
+      }
+    }) 
     }
   }
 

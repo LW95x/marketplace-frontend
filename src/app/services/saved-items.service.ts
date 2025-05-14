@@ -20,7 +20,7 @@ export class SavedItemsService {
     }
 
     addSavedItem(userId: string, savedItem: AddSavedItem): Observable<SavedItem> {
-      return this.http.post<SavedItem>(`${this.apiUrl}/users/${userId}/saved-items`, savedItem);
+      return this.http.post<SavedItem>(`${this.apiUrl}/users/${userId}/saved-items?productId=${savedItem.productId}`, savedItem);
     }
     
     deleteSavedItem(userId: string, productId: string): Observable<void> {
