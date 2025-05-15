@@ -37,6 +37,10 @@ export class SavedItemsComponent {
       if (userId) {
         this.savedItemService.deleteSavedItem(userId, productId).subscribe({
           next: () => {
+            if (this.savedItems) {
+              this.savedItems = this.savedItems.filter( 
+                (item) => item.productId !== productId);
+            }
             console.log('Saved Item was succesfully deleted.');
           },
           error: (err) => {

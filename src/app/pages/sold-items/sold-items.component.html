@@ -1,1 +1,23 @@
-<p>sold-items works!</p>
+<div class="sold-items-container">
+    <h1 class="sold-items-header">Sold Items</h1>
+    <div *ngFor="let soldItem of soldItems" class="sold-items-card">
+        <div class="sold-items-card-item">
+            <img
+            src="https://placehold.co/200x200"
+            alt="Product Image"
+            class="sold-items-card-image"
+          />
+          <div class="text-content">
+            <h1 style="margin-top: 1rem">{{ soldItem.title }}</h1>
+            Description: <p>{{ soldItem.description }}</p>
+            Category: <p>{{ soldItem.category }}</p>
+            Unit Price: <p>{{soldItem.price}}</p>
+            Quantity: <p>{{soldItem.quantity}}</p>
+            Buyer: <p>{{soldItem.buyerName}}</p>
+            Order Date: <p>{{soldItem.orderDate}}</p>
+            Order Status: <p>{{soldItem.status}}</p>
+            Total Price: <p>{{soldItem.totalPrice}}</p>
+          </div>
+        </div>
+    </div>
+</div>

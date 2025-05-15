@@ -22,7 +22,7 @@ export class ProductsComponent {
     this.productService.getAllProducts().subscribe({
       next: (data) => {
         this.products = data;
-        console.log(this.products);
+        console.log('Products succesfully loaded.');
       },
       error: (err) => {
         this.productError =

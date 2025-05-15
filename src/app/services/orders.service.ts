@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CreateOrder, Order, UpdateOrder } from '../models/order.model';
+import { SoldItem } from '../models/order-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class OrdersService {
 
   getSingleOrder(user_id: string, order_id: string): Observable<Order> {
     return this.http.get<Order>(`${this.apiUrl}/users/${user_id}/orders/${order_id}`);
+  }
+
+  getSavedItems(user_id: string): Observable<SoldItem[]> {
+    return this.http.get<SoldItem[]>(`${this.apiUrl}/users/${user_id}/orders/sold-items`);
   }
 
   addNewOrder(user_id: string, order: CreateOrder): Observable<Order> {
