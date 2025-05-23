@@ -31,6 +31,7 @@ import { ChangeEmailComponent } from './pages/change-email/change-email.componen
 import { ChangeAvatarComponent } from './pages/change-avatar/change-avatar.component';
 import { SavedItemsComponent } from './pages/saved-items/saved-items.component';
 import { SoldItemsComponent } from './pages/sold-items/sold-items.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { SoldItemsComponent } from './pages/sold-items/sold-items.component';
     ChangeEmailComponent,
     ChangeAvatarComponent,
     SavedItemsComponent,
-    SoldItemsComponent
+    SoldItemsComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
