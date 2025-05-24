@@ -12,6 +12,9 @@ export class MessagesComponent implements OnInit, OnDestroy {
   messages: Message[] = [];
   liveMessages: string[] = [];
 
+  receiverId: string = '';
+  message: string = '';
+
   constructor(
     private signalRService: SignalrService,
     private messageService: MessagesService
@@ -43,8 +46,18 @@ export class MessagesComponent implements OnInit, OnDestroy {
     }
   }
 
-  send(senderId: string, receiverId: string, message: string): void {
-    this.signalRService.sendMessage(senderId, receiverId, message);
+  sendMessage(receiverId: string, message: string): void {
+    const userId = localStorage.getItem('userId');
+
+    if (userId && receiverId && message) {
+      this.signalRService.sendMessage(userId, receiverId, message).then(() => {
+          console.log('Message successfully sent.');
+          this.message = '';
+        })
+        .catch(err => {
+          console.error('Error sending message.', err);
+        })
+    }
   }
 
   ngOnDestroy(): void {

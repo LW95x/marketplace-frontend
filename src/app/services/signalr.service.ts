@@ -33,11 +33,8 @@ export class SignalrService {
     this.connection?.on('ReceiveMessage', callback);
   }
 
-  sendMessage(senderId: string, receiverId: string, content: string): void {
-    this.connection?.invoke('SendMessage', senderId, receiverId, content)
-      .catch(err => {
-        console.error('Error sending message:', err)
-  });
+  sendMessage(senderId: string, receiverId: string, content: string): Promise<void> {
+    return this.connection!.invoke('SendMessage', senderId, receiverId, content);
   }
 
   removeMessageListener(): void {

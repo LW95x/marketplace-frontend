@@ -1,1 +1,10 @@
-<p>messages works!</p>
+
+<form (ngSubmit)="sendMessage(receiverId, message)">
+<label for="receiverId">Receiver ID</label>
+<input type="text" id="receiverId" [(ngModel)]="receiverId" name="receiverId" required>
+
+<label for="message">Message</label>
+<textarea id="message" [(ngModel)]="message" name="message" required></textarea>
+
+<button type="submit">Send Message</button>
+</form>
