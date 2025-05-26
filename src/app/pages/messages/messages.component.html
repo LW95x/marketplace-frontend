@@ -1,10 +1,8 @@
-
-<form (ngSubmit)="sendMessage(receiverId, message)">
-<label for="receiverId">Receiver ID</label>
-<input type="text" id="receiverId" [(ngModel)]="receiverId" name="receiverId" required>
-
-<label for="message">Message</label>
-<textarea id="message" [(ngModel)]="message" name="message" required></textarea>
-
-<button type="submit">Send Message</button>
-</form>
+<div>
+    <div *ngFor="let message of messages">
+        <a [routerLink]="['/messages', message.receiverId]" style="text-decoration: none; color: inherit;">
+        <b>To {{message.receiverUsername}}</b>
+        <p>{{message.senderUsername}}: {{message.content}}</p>
+        </a>
+    </div>
+</div>

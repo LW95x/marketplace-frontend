@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Message } from 'src/app/models/message.model';
 import { MessagesService } from 'src/app/services/messages.service';
 import { SignalrService } from 'src/app/services/signalr.service';
+import { v4 as uuid } from 'uuid'; 
 
 @Component({
   selector: 'app-messages',
@@ -21,12 +22,11 @@ export class MessagesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const token = localStorage.getItem('accessToken');
-    this.signalRService.startConnection(token!);
+    this.signalRService.startConnection();
     this.loadConversations();
 
-    this.signalRService.onMessageReceived((senderId, message) => {
-      this.liveMessages.push(`${senderId}: ${message}`);
+    this.signalRService.onMessageReceived((msg: Message) => {
+      this.messages.push(msg);
     });
   }
 
@@ -46,12 +46,21 @@ export class MessagesComponent implements OnInit, OnDestroy {
     }
   }
 
-  sendMessage(receiverId: string, message: string): void {
-    const userId = localStorage.getItem('userId');
+  sendMessage(receiverId: string, text: string): void {
+    const senderId = localStorage.getItem('userId');
 
-    if (userId && receiverId && message) {
-      this.signalRService.sendMessage(userId, receiverId, message).then(() => {
+    if (senderId && receiverId && text) {
+      this.signalRService.sendMessage(senderId, receiverId, text).then(() => {
           console.log('Message successfully sent.');
+          this.messages.push({
+            id: uuid(),
+            content: text,
+            sentTime: new Date(),
+            senderId,
+            receiverId,
+            senderUsername: 'You',
+            receiverUsername: ''
+          })
           this.message = '';
         })
         .catch(err => {

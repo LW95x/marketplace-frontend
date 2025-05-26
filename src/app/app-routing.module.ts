@@ -17,6 +17,7 @@ import { ChangeAvatarComponent } from './pages/change-avatar/change-avatar.compo
 import { SavedItemsComponent } from './pages/saved-items/saved-items.component';
 import { SoldItemsComponent } from './pages/sold-items/sold-items.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { ConversationComponent } from './pages/conversation/conversation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'saved-items', component: SavedItemsComponent },
   { path: 'sold-items', component: SoldItemsComponent },
   { path: 'messages', component: MessagesComponent },
+  { path: 'messages/:id', component: ConversationComponent },
 ];
 
 @NgModule({

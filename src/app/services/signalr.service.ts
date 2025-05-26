@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
+import { Message } from 'src/app/models/message.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +9,11 @@ import * as signalR from '@microsoft/signalr';
 export class SignalrService {
   private connection: signalR.HubConnection | null = null;
 
-    startConnection(token: string): void {
+    startConnection(): void {
     this.connection = new signalR.HubConnectionBuilder()
       .withUrl('https://u2umarketplace-api.azurewebsites.net/messagehub', {
-        accessTokenFactory: () => token
+        transport: signalR.HttpTransportType.LongPolling,
+        accessTokenFactory: () => localStorage.getItem('token')!
       }) 
       .withAutomaticReconnect()
       .build();
@@ -29,12 +32,15 @@ export class SignalrService {
     this.connection?.stop();
   }
 
-  onMessageReceived(callback: (user: string, message: string) => void): void {
+  onMessageReceived(callback: (msg: Message) => void): void {
     this.connection?.on('ReceiveMessage', callback);
   }
 
   sendMessage(senderId: string, receiverId: string, content: string): Promise<void> {
-    return this.connection!.invoke('SendMessage', senderId, receiverId, content);
+    return this.connection!.invoke('SendMessage', senderId, receiverId, content)
+    .catch(err => {
+      console.error('Error sending message:', err);
+    })
   }
 
   removeMessageListener(): void {

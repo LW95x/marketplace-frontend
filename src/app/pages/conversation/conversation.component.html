@@ -1,0 +1,15 @@
+<form (ngSubmit)="sendMessage(message)">
+
+<label for="message">Message</label>
+<textarea id="message" [(ngModel)]="message" name="message" required></textarea>
+
+<button type="submit">Send Message</button>
+</form>
+
+<div>
+    <div *ngFor="let message of conversation">
+        <b>To {{message.receiverUsername}}</b>
+        <p>{{message.senderUsername}}: {{message.content}}</p>
+        <p>{{message.sentTime}}</p>
+    </div>
+</div>
