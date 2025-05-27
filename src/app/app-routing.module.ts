@@ -18,6 +18,7 @@ import { SavedItemsComponent } from './pages/saved-items/saved-items.component';
 import { SoldItemsComponent } from './pages/sold-items/sold-items.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { ConversationComponent } from './pages/conversation/conversation.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'sold-items', component: SoldItemsComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'messages/:id', component: ConversationComponent },
+  { path: 'notifications', component: NotificationsComponent },
 ];
 
 @NgModule({

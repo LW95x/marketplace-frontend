@@ -1,0 +1,11 @@
+<div>
+    <div *ngFor="let notification of notifications">
+        <a [routerLink]="[notification.url]" style="text-decoration: none; color: inherit;">
+        <p>{{notification.message}}</p>
+        <p>{{notification.isRead}}</p>
+        </a>
+        <div>
+            <button mat-flat-button class="custom-button" (click)="handleDeleteNotification(notification.id)">X</button>
+        </div>
+    </div>
+</div>

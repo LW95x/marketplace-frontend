@@ -33,6 +33,7 @@ import { SavedItemsComponent } from './pages/saved-items/saved-items.component';
 import { SoldItemsComponent } from './pages/sold-items/sold-items.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { ConversationComponent } from './pages/conversation/conversation.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { ConversationComponent } from './pages/conversation/conversation.compone
     SavedItemsComponent,
     SoldItemsComponent,
     MessagesComponent,
-    ConversationComponent
+    ConversationComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
