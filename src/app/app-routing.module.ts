@@ -19,27 +19,35 @@ import { SoldItemsComponent } from './pages/sold-items/sold-items.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { ConversationComponent } from './pages/conversation/conversation.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'product/:id', component: ProductComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'sell', component: SellComponent },
   { path: 'login', component: LoginRegisterComponent },
   { path: 'reset-password', component: PasswordResetComponent },
-  { path: 'user-products', component: UserProductsComponent },
-  { path: 'orders', component: OrdersComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'change-password', component: ChangePasswordComponent },
-  { path: 'change-email', component: ChangeEmailComponent },
-  { path: 'change-avatar', component: ChangeAvatarComponent },
-  { path: 'saved-items', component: SavedItemsComponent },
-  { path: 'sold-items', component: SoldItemsComponent },
-  { path: 'messages', component: MessagesComponent },
-  { path: 'messages/:id', component: ConversationComponent },
-  { path: 'notifications', component: NotificationsComponent },
+
+  {
+    path: '',
+    canActivateChild: [ authGuard ],
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'product/:id', component: ProductComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'sell', component: SellComponent },
+      { path: 'user-products', component: UserProductsComponent },
+      { path: 'orders', component: OrdersComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'change-password', component: ChangePasswordComponent },
+      { path: 'change-email', component: ChangeEmailComponent },
+      { path: 'change-avatar', component: ChangeAvatarComponent },
+      { path: 'saved-items', component: SavedItemsComponent },
+      { path: 'sold-items', component: SoldItemsComponent },
+      { path: 'messages', component: MessagesComponent },
+      { path: 'messages/:id', component: ConversationComponent },
+      { path: 'notifications', component: NotificationsComponent },
+    ]
+  },
 ];
 
 @NgModule({
