@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { DeCodedJWT } from 'src/app/models/jwt.model';
 import { jwtDecode } from 'jwt-decode';
+import { UsersService } from 'src/app/services/users.service';
+import { CreateUser } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-login-register',
@@ -14,9 +16,11 @@ export class LoginRegisterComponent {
 
   userName: string = '';
   password: string = '';
+  confirmPassword: string = '';
+  email: string = '';
   loginError: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private usersService: UsersService, private router: Router) {}
 
   
   login(): void {
@@ -39,6 +43,24 @@ export class LoginRegisterComponent {
         console.error(err);
       },
     });
+  }
+
+  register(): void {
+    // If password == confirmPassword && unique username
+    const newUser: CreateUser = {
+      email: this.email,
+      userName: this.userName,
+      password: this.password
+    }
+
+    this.usersService.addNewUser(newUser).subscribe({
+      next: () => {
+        console.log('User succesfully registered.');
+      },
+      error: (err) => {
+        console.error('User could not be registered', err);
+      }
+    })
   }
 
   showLogin(): void {

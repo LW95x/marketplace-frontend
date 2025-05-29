@@ -20,18 +20,18 @@
     </div>
 
     <div *ngIf="activeTab === 'register'" class="register-card">
-        <form class="register-form">
+        <form (ngSubmit)="register()" class="register-form">
             <label>Email</label>
-            <input type="email" id="register-email" name="register-email">
+            <input [(ngModel)]="email" type="email" id="register-email" name="register-email">
 
             <label>Username</label>
-            <input type="text" id="register-username" name="register-username">
+            <input [(ngModel)]="userName" type="text" id="register-username" name="register-username">
 
             <label>Password</label>
-            <input type="password" id="register-password" name="register-password">
+            <input [(ngModel)]="password" type="password" id="register-password" name="register-password">
 
             <label>Confirm Password</label>
-            <input type="password" id="confirm-password" name="confirm-password">
+            <input [(ngModel)]="confirmPassword" type="password" id="confirm-password" name="confirm-password">
             <button mat-flat-button class="login-button" type="button">Register</button>
         </form>
     </div>
