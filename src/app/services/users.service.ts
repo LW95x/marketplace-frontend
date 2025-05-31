@@ -19,6 +19,10 @@ export class UsersService {
     return this.http.get<User>(`${this.apiUrl}/users/${user_id}`);
   }
 
+  getUserByUserName(userName: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/username?username=${userName}`);
+  }
+
   addNewUser(user: CreateUser): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/users`, user);
   }

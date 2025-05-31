@@ -25,7 +25,15 @@
             <input [(ngModel)]="email" type="email" id="register-email" name="register-email">
 
             <label>Username</label>
-            <input [(ngModel)]="userName" type="text" id="register-username" name="register-username">
+            <input [(ngModel)]="userName" (ngModelChange)="onUsernameInput($event)" type="text" id="register-username" name="register-username">
+
+            <div *ngIf="usernameAvailable === false" class="text-red-500">
+            Username is already taken.
+            </div>
+
+            <div *ngIf="usernameAvailable === true" class="text-green-500">
+            Username is available.
+            </div>
 
             <label>Password</label>
             <input [(ngModel)]="password" type="password" id="register-password" name="register-password">

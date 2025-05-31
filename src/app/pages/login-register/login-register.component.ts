@@ -5,6 +5,7 @@ import { DeCodedJWT } from 'src/app/models/jwt.model';
 import { jwtDecode } from 'jwt-decode';
 import { UsersService } from 'src/app/services/users.service';
 import { CreateUser } from 'src/app/models/user.model';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login-register',
@@ -18,9 +19,36 @@ export class LoginRegisterComponent {
   password: string = '';
   confirmPassword: string = '';
   email: string = '';
+  usernameInput$ = new Subject<string>();
+  usernameAvailable: boolean | null = null;
+
   loginError: string | null = null;
 
   constructor(private authService: AuthService, private usersService: UsersService, private router: Router) {}
+
+  ngOnInit() {
+    this.usernameInput$.pipe(
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+    .subscribe( (username) => {
+      if (!username) {
+        this.usernameAvailable = null;
+        return;
+      }
+
+      this.usersService.getUserByUserName(username).subscribe({
+        next: () => {
+          this.usernameAvailable = false;
+          console.log("The username already exists.");
+        },
+        error: (err) => {
+          this.usernameAvailable = true;
+          console.log("The username is available.");
+        }
+      })
+    })
+  }
 
   
   login(): void {
@@ -69,5 +97,9 @@ export class LoginRegisterComponent {
 
   showRegister(): void {
     this.activeTab = 'register';
+  }
+
+  onUsernameInput(username: string) {
+    this.usernameInput$.next(username);
   }
 }
