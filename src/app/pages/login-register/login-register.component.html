@@ -40,7 +40,12 @@
 
             <label>Confirm Password</label>
             <input [(ngModel)]="confirmPassword" type="password" id="confirm-password" name="confirm-password">
-            <button mat-flat-button class="login-button" type="button">Register</button>
+            <button mat-flat-button class="login-button" type="button" type="submit">Register</button>
+            <div *ngIf="registerErrors">
+                <div *ngFor="let error of registerErrors">
+                    {{ error }} 
+                </div>
+            </div>
         </form>
     </div>
 

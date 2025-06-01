@@ -23,6 +23,8 @@ export class LoginRegisterComponent {
   usernameAvailable: boolean | null = null;
 
   loginError: string | null = null;
+  registerErrors: string[] | null = null;
+  registerError: string | null = null;
 
   constructor(private authService: AuthService, private usersService: UsersService, private router: Router) {}
 
@@ -42,7 +44,7 @@ export class LoginRegisterComponent {
           this.usernameAvailable = false;
           console.log("The username already exists.");
         },
-        error: (err) => {
+        error: () => {
           this.usernameAvailable = true;
           console.log("The username is available.");
         }
@@ -74,7 +76,10 @@ export class LoginRegisterComponent {
   }
 
   register(): void {
-    // If password == confirmPassword && unique username
+    if (this.password === this.confirmPassword && this.usernameAvailable) {
+    this.registerErrors = null;
+    this.registerError = null;
+
     const newUser: CreateUser = {
       email: this.email,
       userName: this.userName,
@@ -87,8 +92,17 @@ export class LoginRegisterComponent {
       },
       error: (err) => {
         console.error('User could not be registered', err);
+
+        if (Array.isArray(err.error)) {
+          this.registerErrors = err.error.map((e: any) => e.description);
+        } else {
+          this.registerError = Object.values(err.error.errors).flat().join(' ');
+
+        }
+
       }
     })
+    }
   }
 
   showLogin(): void {
