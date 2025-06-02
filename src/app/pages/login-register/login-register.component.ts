@@ -21,6 +21,8 @@ export class LoginRegisterComponent {
   email: string = '';
   usernameInput$ = new Subject<string>();
   usernameAvailable: boolean | null = null;
+  passwordValidity: boolean = false;
+  passwordMatch: boolean = false;
 
   loginError: string | null = null;
   registerErrors: string[] | null = null;
@@ -76,7 +78,7 @@ export class LoginRegisterComponent {
   }
 
   register(): void {
-    if (this.password === this.confirmPassword && this.usernameAvailable) {
+    if (this.usernameAvailable) {
     this.registerErrors = null;
     this.registerError = null;
 
@@ -89,6 +91,7 @@ export class LoginRegisterComponent {
     this.usersService.addNewUser(newUser).subscribe({
       next: () => {
         console.log('User succesfully registered.');
+        this.router.navigate(['']);
       },
       error: (err) => {
         console.error('User could not be registered', err);
@@ -97,13 +100,23 @@ export class LoginRegisterComponent {
           this.registerErrors = err.error.map((e: any) => e.description);
         } else {
           this.registerError = Object.values(err.error.errors).flat().join(' ');
-
         }
-
       }
     })
     }
   }
+
+  checkPasswordValidity(): void {
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,}$/;
+    this.passwordValidity = pattern.test(this.password);
+    this.checkPasswordsMatching();
+  }
+
+  checkPasswordsMatching(): void {
+    this.passwordMatch = this.password === this.confirmPassword;
+  }
+
+
 
   showLogin(): void {
     this.activeTab = 'login';

@@ -36,10 +36,25 @@
             </div>
 
             <label>Password</label>
-            <input [(ngModel)]="password" type="password" id="register-password" name="register-password">
+            <small>
+            Password must be at least 10 characters, include at least one uppercase letter, one lowercase letter, and one number.
+            </small>
+            <input [(ngModel)]="password" type="password" id="register-password" name="register-password" (ngModelChange)="checkPasswordValidity()">
+
+            <div>
+            <span *ngIf="password && passwordValidity" class="text-green-500">✔</span>
+            <span *ngIf="password && !passwordValidity" class="text-red-500">✘</span>
+            </div>
 
             <label>Confirm Password</label>
-            <input [(ngModel)]="confirmPassword" type="password" id="confirm-password" name="confirm-password">
+            <input [(ngModel)]="confirmPassword" type="password" id="confirm-password" name="confirm-password" (ngModelChange)="checkPasswordsMatching()">
+
+            
+            <div>
+            <span *ngIf="password && passwordMatch" class="text-green-500">✔</span>
+            <span *ngIf="password && !passwordMatch" class="text-red-500">✘</span>
+            </div>
+
             <button mat-flat-button class="login-button" type="button" type="submit">Register</button>
             <div *ngIf="registerErrors">
                 <div *ngFor="let error of registerErrors">
