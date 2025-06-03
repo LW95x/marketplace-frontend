@@ -72,7 +72,7 @@ export class LoginRegisterComponent {
       error: (err) => {
         this.loginError =
           'Login attempt failed. Please check your credentials.';
-        console.error(err);
+        console.error('Login attempt failed', err);
       },
     });
   }
@@ -90,8 +90,27 @@ export class LoginRegisterComponent {
 
     this.usersService.addNewUser(newUser).subscribe({
       next: () => {
-        console.log('User succesfully registered.');
+        console.log('User successfully registered.');
+
+        this.authService.login(this.userName, this.password).subscribe({
+      next: ( jwt: string) => {
+        localStorage.setItem('token', jwt);
+        this.loginError = null;
+        const decoded: DeCodedJWT = jwtDecode(jwt);
+
+        localStorage.setItem('email', decoded.email);
+        localStorage.setItem('username', decoded.user_name);
+        localStorage.setItem('userId', decoded.sub);
+
+        console.log('The login was successful');
         this.router.navigate(['']);
+      },
+      error: (err) => {
+        this.registerError =
+          'Login attempt failed. Please check your credentials.';
+        console.error('Login attempt failed', err);
+      },
+    });
       },
       error: (err) => {
         console.error('User could not be registered', err);
