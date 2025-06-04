@@ -15,9 +15,11 @@
             Unit Price: <p>{{product.price}}</p>
             Quantity: <p>{{product.quantity}}</p>
             Image URLs: {{product.imageUrls}}
-            <button mat-flat-button class="custom-button-del" (click)="handleDeletion(product)">Delete Item</button>
+          </div>
+          <div class="button-container">
+          <button mat-flat-button class="custom-button-del" (click)="handleDeletion(product)">Delete Product</button>
+          <button mat-flat-button class="custom-button" [routerLink]="['/update-product', product.productId]">Edit Product</button>
           </div>
         </div>
     </div>
-    <button mat-flat-button class="custom-button">Edit Product</button>
 </div>

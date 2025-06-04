@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
-  selector: 'app-sell',
-  templateUrl: './sell.component.html',
-  styleUrls: ['./sell.component.css'],
+  selector: 'app-update-product',
+  templateUrl: './update-product.component.html',
+  styleUrls: ['./update-product.component.css']
 })
-export class SellComponent {
+export class UpdateProductComponent {
   categories: string[] = [
     'Electronics',
     'Fashion',
     'Home & Garden',
-    'Sports',
+    'Sport',
     'Toys',
     'Books',
   ];
@@ -26,12 +29,27 @@ export class SellComponent {
   ];
   returns: string[] = ['Yes', 'No'];
 
+  productId!: string;
+  product!: Product;
   selectedCategory: string = '';
   selectedCondition: string = '';
   selectedReturn: string = '';
   formattedProductPrice: string = '£0.00';
   formattedDeliveryFee: string = '£0.00';
   imagePreviews: string[] = [];
+
+  constructor(
+      private route: ActivatedRoute,
+      private productService: ProductsService
+    ) {}
+
+  ngOnInit(): void {
+    this.productId = this.route.snapshot.paramMap.get('id')!;
+    this.productService.getProductById(this.productId).subscribe({
+      next: (data) => (this.product = data),
+      error: (err) => console.error('Product ID couldnt be found:', err),
+    });
+  }
 
   onImageSelection(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -84,3 +102,4 @@ export class SellComponent {
     input.value = this.formattedDeliveryFee;
   }
 }
+

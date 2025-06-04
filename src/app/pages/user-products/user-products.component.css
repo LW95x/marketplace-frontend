@@ -54,8 +54,8 @@
     transition: background-color 1s;
     width: 10rem; 
     height: 3rem; 
-    align-self: flex-end;
-    margin-right: 12rem;
+    margin-left: auto;
+    margin-right: 1rem;
     margin-bottom: 1rem;
     margin-top: auto;
     border: 1px solid #ECE6F0;
@@ -70,9 +70,16 @@
     background-color: #ECE6F0 !important; 
     transition: background-color 1s;
     width: 10rem; 
-    height: 2rem; 
-    align-self: flex-end;
+    height: 3rem; 
+    margin-left: auto;
+    margin-right: 1rem;
     margin-top: 0.5rem;
     border: 1px solid #ECE6F0;
     border-radius: 1rem;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
 }

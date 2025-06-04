@@ -1,0 +1,61 @@
+<div>
+  <div>
+    <h1 class="sell-header">Update A Product</h1>
+  </div>
+  <form *ngIf="product" class="sell-form" encType="multipart/form-data" method="POST">
+  <label for="productName">Product Name</label>
+  <input [(ngModel)]="product.title" type="text" id="productName" name="productName" style="width: 600px;">
+
+  
+  <label for="productDesc">Product Description</label>
+  <textarea [(ngModel)]="product.description" id="productDesc" class="product-description" name="productDescription"></textarea>
+
+  <label for="productName">Price</label>
+  <input [(ngModel)]="product.price" type="text" id="productPrice" name="productPrice" [value]="formattedProductPrice" 
+  (input)="formatProductPrice($event)">
+
+  <label for="productName">Quantity</label>
+  <input [(ngModel)]="product.quantity" type="number" id="productQuantity" name="productQuantity">
+
+
+    <label for="category">Category:</label>
+    <select [(ngModel)]="product.category" id="category" name="productCategory">
+      <option value="" disabled>Select a category</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+
+    <label for="condition">Condition:</label>
+    <select id="condition" [(ngModel)]="selectedCondition" name="productCondition">
+      <option value="" disabled>Select a condition</option>
+      <option *ngFor="let condition of conditions" [value]="condition">{{ condition }}</option>
+    </select>
+
+
+  <label for="productImages">Photos</label>
+  <input type="file" id="productImages" name="productImages" accept="image/*" multiple (change)="onImageSelection($event)">
+ 
+  <div *ngIf="imagePreviews.length > 0" class="preview-container">
+    <div *ngFor="let img of imagePreviews; let i = index" class="preview-item">
+      <img [src]="img" alt="Image Preview" class="image-preview" />
+      <button type="button" (click)="removeImage(i)">X</button>
+    </div> 
+  </div>
+
+  <label for="deliveryFee">Delivery Fee</label>
+  <input 
+    type="text" 
+    id="deliveryFee" 
+    name="deliveryFee" 
+    [value]="formattedDeliveryFee" 
+    (input)="formatDeliveryFee($event)"
+  >
+
+  <label for="return">Do you want to allow returns?</label>
+    <select id="return" [(ngModel)]="selectedReturn">
+      <option value="" disabled>Select an option</option>
+      <option *ngFor="let returnOption of returns" [value]="returnOption">{{ returnOption }}</option>
+    </select>
+
+  <button mat-flat-button class="custom-button">Update Product</button>
+  </form>
+</div>

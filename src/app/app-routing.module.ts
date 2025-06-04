@@ -20,6 +20,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { ConversationComponent } from './pages/conversation/conversation.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { authGuard } from './auth.guard';
+import { UpdateProductComponent } from './pages/update-product/update-product.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginRegisterComponent },
@@ -27,7 +28,7 @@ const routes: Routes = [
 
   {
     path: '',
-    canActivateChild: [ authGuard ],
+    canActivateChild: [authGuard],
     children: [
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
@@ -46,7 +47,8 @@ const routes: Routes = [
       { path: 'messages', component: MessagesComponent },
       { path: 'messages/:id', component: ConversationComponent },
       { path: 'notifications', component: NotificationsComponent },
-    ]
+      { path: 'update-product/:id', component: UpdateProductComponent },
+    ],
   },
 ];
 
