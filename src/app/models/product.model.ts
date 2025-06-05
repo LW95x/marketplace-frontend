@@ -8,6 +8,9 @@ export interface Product {
   sellerName: string;
   sellerId: string;
   imageUrls: string[];
+  condition: string;
+  deliveryFee: number;
+  allowReturns: boolean;
 }
 
 export interface CreateProduct {
@@ -17,6 +20,9 @@ export interface CreateProduct {
   quantity: number;
   category: string;
   imageUrls: string[];
+  condition: string;
+  deliveryFee: number;
+  allowReturns: boolean;
 }
 
 export interface UpdateProduct {

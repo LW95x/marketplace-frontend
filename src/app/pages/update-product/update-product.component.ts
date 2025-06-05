@@ -6,7 +6,7 @@ import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-update-product',
   templateUrl: './update-product.component.html',
-  styleUrls: ['./update-product.component.css']
+  styleUrls: ['./update-product.component.css'],
 })
 export class UpdateProductComponent {
   categories: string[] = [
@@ -27,7 +27,10 @@ export class UpdateProductComponent {
     'Used (Ok)',
     'For parts/Not working',
   ];
-  returns: string[] = ['Yes', 'No'];
+  returns = [
+    { label: 'Yes', value: true },
+    { label: 'No', value: false },
+  ];
 
   productId!: string;
   product!: Product;
@@ -37,16 +40,19 @@ export class UpdateProductComponent {
   formattedProductPrice: string = '£0.00';
   formattedDeliveryFee: string = '£0.00';
   imagePreviews: string[] = [];
+  existingImageUrls: string[] = [];
 
   constructor(
-      private route: ActivatedRoute,
-      private productService: ProductsService
-    ) {}
+    private route: ActivatedRoute,
+    private productService: ProductsService
+  ) {}
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id')!;
     this.productService.getProductById(this.productId).subscribe({
-      next: (data) => (this.product = data),
+      next: (data) => (
+        (this.product = data), (this.existingImageUrls = this.product.imageUrls)
+      ),
       error: (err) => console.error('Product ID couldnt be found:', err),
     });
   }
@@ -68,6 +74,10 @@ export class UpdateProductComponent {
         reader.readAsDataURL(file);
       });
     }
+  }
+
+  removeExistingImage(index: number): void {
+    this.existingImageUrls.splice(index, 1);
   }
 
   removeImage(index: number): void {
@@ -102,4 +112,3 @@ export class UpdateProductComponent {
     input.value = this.formattedDeliveryFee;
   }
 }
-
