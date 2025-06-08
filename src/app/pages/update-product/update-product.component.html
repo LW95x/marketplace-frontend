@@ -33,6 +33,8 @@
   <label for="productImages">Photos</label>
   <input type="file" id="productImages" name="productImages" accept="image/*" multiple (change)="onImageSelection($event)">
  
+
+  <label for="existingImages">Existing Product Images</label>
 <div *ngIf="existingImageUrls.length > 0" class="preview-container">
   <div *ngFor="let img of existingImageUrls; let i = index" class="preview-item">
     <img [src]="img" alt="Existing Product Image" class="image-preview" />
@@ -40,6 +42,7 @@
   </div>
 </div>
 
+<label for="newImages">New Product Images</label>
 <div *ngIf="imagePreviews.length > 0" class="preview-container">
   <div *ngFor="let img of imagePreviews; let i = index" class="preview-item">
     <img [src]="img" alt="New Image Preview" class="image-preview" />

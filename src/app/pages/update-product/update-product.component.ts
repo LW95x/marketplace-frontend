@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/models/product.model';
+import { Product, UpdateProduct } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -41,6 +42,7 @@ export class UpdateProductComponent {
   formattedDeliveryFee: string = '£0.00';
   imagePreviews: string[] = [];
   existingImageUrls: string[] = [];
+  productForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -55,6 +57,42 @@ export class UpdateProductComponent {
       ),
       error: (err) => console.error('Product ID couldnt be found:', err),
     });
+  }
+
+  update(): void {
+    const userId = localStorage.getItem('userId');
+    
+    const formValues = this.productForm.value;
+    const jsonPatchDocuments: UpdateProduct[] = [];
+
+    for (const [field, value] of Object.entries(formValues)) {
+      jsonPatchDocuments.push({
+        op: 'replace',
+        path: `/${field}`,
+        value
+      });
+    }
+
+    const combinedImagesArray = [
+      ...this.existingImageUrls,
+      ...this.imagePreviews
+    ];
+
+    jsonPatchDocuments.push({
+      op: 'replace',
+      path: `/images`,
+      value: combinedImagesArray
+    })
+
+    const jsonPatchDocument: UpdateProduct[] = [{
+      op: 'replace',
+      path: '/',
+      value: ''
+    }]
+
+    if (userId) {
+      this.productService.updateProduct(userId, this.productId, )
+    }
   }
 
   onImageSelection(event: Event): void {
