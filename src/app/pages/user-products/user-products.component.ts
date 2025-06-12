@@ -37,7 +37,9 @@ export class UserProductsComponent {
     const userId = localStorage.getItem('userId');
     const productId = product.productId;
 
-    if (userId && productId) {
+    const confirmDelete = window.confirm('Are you sure you want to delete this product?');
+
+    if (userId && productId && confirmDelete) {
       this.productService.deleteProduct(userId, productId).subscribe({
         next: () => {
           if (this.userProducts) {

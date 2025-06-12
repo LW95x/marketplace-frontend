@@ -1,8 +1,8 @@
 <div>
   <div>
-    <h1 class="sell-header">Update A Product</h1>
+    <h1 class="update-product-header">Update A Product</h1>
   </div>
-  <form *ngIf="product" class="sell-form" encType="multipart/form-data" method="POST">
+  <form *ngIf="product" class="update-product-form" (ngSubmit)="update()">
   <label for="productName">Product Name</label>
   <input [(ngModel)]="product.title" type="text" id="productName" name="productName" style="width: 600px;">
 
@@ -65,6 +65,6 @@
       <option *ngFor="let returnOption of returns" [ngValue]="product.allowReturns">{{ returnOption.label }}</option>
     </select>
 
-  <button mat-flat-button class="custom-button">Update Product</button>
+  <button mat-flat-button class="custom-button" type="submit">Update Product</button>
   </form>
 </div>

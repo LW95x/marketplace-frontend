@@ -35,6 +35,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { ConversationComponent } from './pages/conversation/conversation.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { UpdateProductComponent } from './pages/update-product/update-product.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { UpdateProductComponent } from './pages/update-product/update-product.co
     MessagesComponent,
     ConversationComponent,
     NotificationsComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateUser, UpdateUser, User } from '../models/user.model';
+import { CreateUser, EmailRequest, UpdateUser, User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -55,5 +55,9 @@ export class UsersService {
 
   deleteUser(user_id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/users/${user_id}`);
+  }
+
+  sendEmailRequest(emailRequest: EmailRequest): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/users/reset-password`, emailRequest);
   }
 }

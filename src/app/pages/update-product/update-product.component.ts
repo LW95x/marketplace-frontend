@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product, UpdateProduct } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
@@ -42,7 +41,6 @@ export class UpdateProductComponent {
   formattedDeliveryFee: string = '£0.00';
   imagePreviews: string[] = [];
   existingImageUrls: string[] = [];
-  productForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,37 +59,29 @@ export class UpdateProductComponent {
 
   update(): void {
     const userId = localStorage.getItem('userId');
-    
-    const formValues = this.productForm.value;
-    const jsonPatchDocuments: UpdateProduct[] = [];
 
-    for (const [field, value] of Object.entries(formValues)) {
-      jsonPatchDocuments.push({
-        op: 'replace',
-        path: `/${field}`,
-        value
-      });
-    }
-
-    const combinedImagesArray = [
-      ...this.existingImageUrls,
-      ...this.imagePreviews
+    const jsonPatchDocuments: UpdateProduct[] = [
+      { op: 'replace', path: '/title', value: this.product.title },
+      { op: 'replace', path: '/description', value: this.product.description },
+      { op: 'replace', path: '/price', value: this.product.price },
+      { op: 'replace', path: '/quantity', value: this.product.quantity },
+      { op: 'replace', path: '/category', value: this.product.category },
+      { op: 'replace', path: '/condition', value: this.product.condition },
+      { op: 'replace', path: '/deliveryFee', value: this.product.deliveryFee},
+      { op: 'replace', path: '/allowReturns', value: this.product.allowReturns},
+      { op: 'replace', path: '/imageUrls', value: [ ...this.existingImageUrls, ...this.imagePreviews ]}
     ];
 
-    jsonPatchDocuments.push({
-      op: 'replace',
-      path: `/images`,
-      value: combinedImagesArray
-    })
-
-    const jsonPatchDocument: UpdateProduct[] = [{
-      op: 'replace',
-      path: '/',
-      value: ''
-    }]
-
     if (userId) {
-      this.productService.updateProduct(userId, this.productId, )
+      this.productService.updateProduct(userId, this.productId, jsonPatchDocuments)
+      .subscribe({
+        next: () => {
+          console.log('User product was succesfully updated.');
+        },
+        error: (err) => {
+          console.error('Failed to update user product.', err);
+        }
+      })
     }
   }
 

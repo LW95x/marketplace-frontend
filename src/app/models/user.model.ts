@@ -16,3 +16,8 @@ export interface UpdateUser {
   path: string;
   value: any;
 }
+
+export interface EmailRequest {
+  email: string;
+  clientAppUrl: string;
+}

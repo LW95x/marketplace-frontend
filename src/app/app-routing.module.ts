@@ -21,6 +21,7 @@ import { ConversationComponent } from './pages/conversation/conversation.compone
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { authGuard } from './auth.guard';
 import { UpdateProductComponent } from './pages/update-product/update-product.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginRegisterComponent },
@@ -48,6 +49,7 @@ const routes: Routes = [
       { path: 'messages/:id', component: ConversationComponent },
       { path: 'notifications', component: NotificationsComponent },
       { path: 'update-product/:id', component: UpdateProductComponent },
+      { path: 'reset-password', component: ForgotPasswordComponent }
     ],
   },
 ];
