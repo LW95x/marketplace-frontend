@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from 'src/app/models/message.model';
+import { User } from 'src/app/models/user.model';
 import { MessagesService } from 'src/app/services/messages.service';
 import { SignalrService } from 'src/app/services/signalr.service';
+import { UsersService } from 'src/app/services/users.service';
 import { v4 as uuid } from 'uuid'; 
 
 @Component({
@@ -13,22 +15,30 @@ import { v4 as uuid } from 'uuid';
 export class ConversationComponent implements OnInit, OnDestroy {
   receiverId!: string;
   conversation: Message[] = [];
+  user!: User;
+
   message: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private messageService: MessagesService,
     private signalRService: SignalrService,
-  ){}
+    private userService: UsersService
+  ) {}
 
  ngOnInit(): void {
     this.signalRService.startConnection();
-    this.receiverId = this.route.snapshot.paramMap.get('id')!;
-    this.loadSingleConversation();
-
-    this.signalRService.onMessageReceived((msg: Message) => {
-      this.conversation.push(msg);
-    });
+    this.receiverId = this.route.snapshot.paramMap.get('id')!;  
+    if (this.receiverId) {
+      this.loadSingleConversation();
+      this.loadSingleUser();
+  
+      this.signalRService.onMessageReceived((msg: Message) => {
+        this.conversation.push(msg);
+      });
+    } else {
+      console.error('Receiver ID could not be fetched from route parameters');
+    }
  }
 
  loadSingleConversation(): void {
@@ -42,6 +52,20 @@ export class ConversationComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.error('Conversation could not be loaded.', err);
+      }
+    })
+  }
+ }
+
+ loadSingleUser(): void {
+  if (this.receiverId) {
+    this.userService.getSingleUser(this.receiverId).subscribe({
+      next: (data) => {
+        this.user = data;
+        console.log('User successfully loaded.');
+      },
+      error: (err) => {
+        console.error('User could not be loaded.', err);
       }
     })
   }

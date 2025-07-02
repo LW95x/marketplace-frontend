@@ -1,9 +1,11 @@
 <form (ngSubmit)="sendMessage(message)">
-
+<div *ngIf="user">
+    <h1>To: {{user.userName}}</h1>
 <label for="message">Message</label>
 <textarea id="message" [(ngModel)]="message" name="message" required></textarea>
 
 <button type="submit">Send Message</button>
+</div>
 </form>
 
 <div>
