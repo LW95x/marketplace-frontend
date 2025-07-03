@@ -1,8 +1,8 @@
 <div>
-    <p>Who would you like to directly message?</p>
-    <div *ngFor="let user of users">
-        <a [routerLink]="['/messages', user.userId]" style="text-decoration: none; color: inherit;">
-        <b>{{user.userName}}</b>
+    <h1>Existing Conversations</h1>
+    <div *ngFor="let conversation of conversations">
+        <a [routerLink]="['/messages', conversation.receiverId]" style="text-decoration: none; color: inherit;">
+        <b>{{conversation.receiverUsername}}</b>
         </a>
     </div>
 </div>

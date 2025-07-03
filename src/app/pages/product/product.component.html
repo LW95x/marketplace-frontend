@@ -14,7 +14,10 @@
         <p>{{ product.description }}</p>
         <p>£{{ product.price }}</p>
         <p> Quantity: {{ product.quantity }} </p>
-        <p> <b>Seller:</b> {{ product.sellerName }} </p>
+        <p> <b>Seller:</b> {{ product.sellerName }}         
+        <a [routerLink]="['/messages', product.sellerId]" style="text-decoration: none;">
+        (Contact Seller)
+        </a></p>
         <p> Category: {{ product.category }} </p>
       </div>
       <div class="quantity-container">
