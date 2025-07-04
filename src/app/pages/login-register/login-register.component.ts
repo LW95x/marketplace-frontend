@@ -67,7 +67,7 @@ export class LoginRegisterComponent {
         localStorage.setItem('userId', decoded.sub);
 
         console.log('The login was successful');
-        this.router.navigate(['']);
+        this.router.navigate(['']).then( () => window.location.reload());
       },
       error: (err) => {
         this.loginError =
@@ -103,7 +103,7 @@ export class LoginRegisterComponent {
         localStorage.setItem('userId', decoded.sub);
 
         console.log('The login was successful');
-        this.router.navigate(['']);
+        this.router.navigate(['']).then( () => window.location.reload());
       },
       error: (err) => {
         this.registerError =

@@ -56,6 +56,16 @@ header {
     transition: filter 0.3s ease;
     font-weight: bold;
     gap: 4px;
+    border: none;
+    background: none;
+}
+
+button.nav-item {
+  outline: none;
+}
+
+button.nav-item:focus {
+  outline: none;
 }
 
 .nav-item:hover, .search:hover {
