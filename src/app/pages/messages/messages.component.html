@@ -1,8 +1,18 @@
-<div>
-    <h1>Existing Conversations</h1>
-    <div *ngFor="let conversation of conversations">
-        <a [routerLink]="['/messages', conversation.receiverId]" style="text-decoration: none; color: inherit;">
-        <b>{{conversation.receiverUsername}}</b>
-        </a>
-    </div>
+<div class="messages-container">
+  <h1 class="messages-header">Direct Messages</h1>
+  <div class="messages-card">
+    <a
+      [routerLink]="['/messages', conversation.receiverId]"
+      style="text-decoration: none; color: inherit"
+      *ngFor="let conversation of conversations"
+    >
+      <div class="messages-card-item">
+        <div class="text-content">
+          <b>{{ conversation.receiverUsername }}</b>
+          <i>Last Message:</i>{{ conversation.content }}
+        </div>
+      </div>
+    </a>
+    <div style="display: flex; align-items: center"></div>
+  </div>
 </div>
