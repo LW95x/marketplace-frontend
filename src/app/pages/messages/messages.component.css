@@ -23,34 +23,29 @@
     border-color: #ECE6F0;
     border-width: 1px;
     border-style: solid;
-    border-radius: 0.5rem;
-    width: 100%;
+    width: 40rem;
     max-width: 50%;
-    height: 5rem;
+    height: 10rem;
     display: flex;
     flex-direction: row;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
 }
 
-.messages-card-image {
-    width: 24rem;
-    height: 10rem;
-    object-fit: cover;
-    flex-shrink: 0;
-    padding: 1rem;
-    align-items: center;
-    border-radius: 1.5rem;
+.messages-card-item:hover {
+    background-color: #D6CFDB;
 }
 
 .messages-container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
 }
 
 .text-content {
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 }
 
 .custom-button {
