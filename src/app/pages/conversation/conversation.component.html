@@ -3,7 +3,7 @@
 
   <form (ngSubmit)="sendMessage(message)">
     <div *ngIf="user" class="text-content">
-      <h1 class="conversation-sub-header">To: {{ user.userName }}</h1>
+      <h3 class="conversation-sub-header">To: {{ user.userName }}</h3>
       <textarea
         id="message"
         [(ngModel)]="message"
@@ -18,9 +18,16 @@
   <div class="conversation-card">
       <div *ngFor="let message of conversation" class="conversation-card-item">
     <div class="text-content">
-        <b>To {{ message.receiverUsername }}</b>
+        <b>
+          {{ message.senderId === userId ? 'To' : 'From' }}
+          {{ message.senderId === userId ? message.receiverUsername : message.senderUsername }}
+        </b>
+        <hr/>
+        <br/>
         <p>{{ message.senderUsername }}: {{ message.content }}</p>
-        <p>{{ message.sentTime | date : "HH:mm - dd/MM/yyyy" }}</p>
+        <br/>
+        <hr/>
+        <i>{{ message.sentTime | date : "HH:mm - dd/MM/yyyy" }}</i>
       </div>
     </div>
   </div>

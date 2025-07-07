@@ -9,12 +9,13 @@ import { MessagesService } from 'src/app/services/messages.service';
 })
 export class MessagesComponent {
   conversations: Message[] = [];
+  userId: string | null = null;
 
   constructor(private messageService: MessagesService) {}
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
     this.loadConversations();
-    
   }
 
   loadConversations(): void {
@@ -27,7 +28,6 @@ export class MessagesComponent {
             (a, b) =>
               new Date(b.sentTime).getTime() - new Date(a.sentTime).getTime()
           );
-          console.log(this.conversations.map(c => c.sentTime));
           console.log(`Messages succesfully loaded.`);
         },
         error: (err) => {

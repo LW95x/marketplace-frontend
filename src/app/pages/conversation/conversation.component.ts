@@ -16,6 +16,7 @@ export class ConversationComponent implements OnInit, OnDestroy {
   receiverId!: string;
   conversation: Message[] = [];
   user!: User;
+  userId: string | null = null;
 
   message: string = '';
 
@@ -27,6 +28,7 @@ export class ConversationComponent implements OnInit, OnDestroy {
   ) {}
 
  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
     this.signalRService.startConnection();
     this.receiverId = this.route.snapshot.paramMap.get('id')!;  
     if (this.receiverId) {
@@ -34,7 +36,7 @@ export class ConversationComponent implements OnInit, OnDestroy {
       this.loadSingleUser();
   
       this.signalRService.onMessageReceived((msg: Message) => {
-        this.conversation.push(msg);
+        this.conversation.unshift(msg);
       });
     } else {
       console.error('Receiver ID could not be fetched from route parameters');
@@ -47,7 +49,10 @@ export class ConversationComponent implements OnInit, OnDestroy {
   if (userId) {
     this.messageService.getSingleConversation(userId, this.receiverId).subscribe({
       next: (data) => {
-        this.conversation = data;
+        this.conversation = data.sort(
+            (a, b) =>
+              new Date(b.sentTime).getTime() - new Date(a.sentTime).getTime()
+          );
         console.log('Conversation successfully loaded.');
       },
       error: (err) => {
@@ -80,11 +85,11 @@ export class ConversationComponent implements OnInit, OnDestroy {
       sentTime: new Date(),
       senderId: senderId!,
       receiverId: this.receiverId,
-      senderUsername: 'You',
-      receiverUsername: ''
+      senderUsername: this.user?.userName,
+      receiverUsername: this.user?.userName
     }
 
-    this.conversation.push(tempMsg);
+    this.conversation.unshift(tempMsg);
     this.message = '';
 
     if (senderId && this.receiverId && text) {

@@ -39,11 +39,11 @@ textarea {
     border-style: solid;
     width: 40rem;
     max-width: 50%;
-    height: 10rem;
     display: flex;
     flex-direction: row;
     margin-bottom: 1rem;
     border-radius: 1rem;
+    padding: 1rem;
 }
 
 .conversation-card-item:hover {
@@ -89,3 +89,7 @@ textarea {
     border-radius: 1rem;
 }
 
+hr {
+  width: 100%;
+  border-top: 1px solid black;
+}
