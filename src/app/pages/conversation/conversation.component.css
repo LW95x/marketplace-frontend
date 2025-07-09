@@ -46,10 +46,6 @@ textarea {
     padding: 1rem;
 }
 
-.conversation-card-item:hover {
-    background-color: #D6CFDB;
-}
-
 .conversation-container {
     display: flex;
     align-items: center;

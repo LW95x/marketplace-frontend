@@ -16,7 +16,7 @@
   </form>
 
   <div class="conversation-card">
-      <div *ngFor="let message of conversation" class="conversation-card-item">
+      <div *ngFor="let message of conversation" class="conversation-card-item" [ngStyle]="{'background-color': message.receiverId === userId ? '#D6CFDB' : 'white' }">
     <div class="text-content">
         <b>
           {{ message.senderId === userId ? 'To' : 'From' }}

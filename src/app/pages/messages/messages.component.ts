@@ -23,17 +23,27 @@ export class MessagesComponent {
 
     if (userId) {
       this.messageService.getAllConversations(userId).subscribe({
-        next: (data) => {
-          this.conversations = data.sort(
-            (a, b) =>
-              new Date(b.sentTime).getTime() - new Date(a.sentTime).getTime()
+        next: data => {
+          const sorted = [...data].sort(
+            (a, b) => new Date(b.sentTime).getTime() - new Date(a.sentTime).getTime()
           );
-          console.log(`Messages succesfully loaded.`);
-        },
-        error: (err) => {
-          console.error('Messages could not be loaded.', err);
-        },
-      });
-    }
+
+    const seen = new Set<string>();
+    const removedDupes = sorted.filter(msg => {
+      const key = [msg.senderId, msg.receiverId]
+        .map(id => id.trim().toLowerCase())
+        .sort()
+        .join('-');
+
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    this.conversations = removedDupes;
+  },
+  error: err => console.error(err)
+});
   }
+}
 }
