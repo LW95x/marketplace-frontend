@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from 'src/app/models/message.model';
+import { CreateNotification } from 'src/app/models/notification.model';
 import { User } from 'src/app/models/user.model';
 import { MessagesService } from 'src/app/services/messages.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { SignalrService } from 'src/app/services/signalr.service';
 import { UsersService } from 'src/app/services/users.service';
 import { v4 as uuid } from 'uuid'; 
@@ -24,7 +26,8 @@ export class ConversationComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private messageService: MessagesService,
     private signalRService: SignalrService,
-    private userService: UsersService
+    private userService: UsersService,
+    private notificationService: NotificationsService
   ) {}
 
  ngOnInit(): void {
@@ -78,6 +81,7 @@ export class ConversationComponent implements OnInit, OnDestroy {
 
    sendMessage(text: string): void {
     const senderId = localStorage.getItem('userId');
+    const currentUser = localStorage.getItem('username');
 
     const tempMsg: Message = {
       id: uuid(),
@@ -94,6 +98,13 @@ export class ConversationComponent implements OnInit, OnDestroy {
 
     if (senderId && this.receiverId && text) {
       this.signalRService.sendMessage(senderId, this.receiverId, text).then(() => {
+          const notification: CreateNotification = {
+            message: `${currentUser} sent you a new message!`,
+            url: `/messages/${senderId}`
+          };
+          this.notificationService.addUserNotification(this.receiverId, notification).subscribe( () => {
+            console.log('Notification successfully sent.');
+          })
           console.log('Message successfully sent.');
         })
         .catch(err => {
