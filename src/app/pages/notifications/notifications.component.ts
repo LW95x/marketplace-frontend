@@ -22,7 +22,8 @@ export class NotificationsComponent {
     if (userId) {
       this.notificationService.getAllUserNotifications(userId).subscribe({
         next: (data) => {
-          this.notifications = data;
+          this.notifications = data.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+          console.log('Notifications successfully loaded.');
         },
         error: (err) => console.error('Could not find user notifications', err),
       });

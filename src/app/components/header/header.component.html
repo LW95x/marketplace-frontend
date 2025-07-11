@@ -12,10 +12,11 @@
     </span>
   </div>
   <div class="profile-cart">
-    <a href="profile" style="text-decoration: none; color: inherit">
+    <a href="profile" style="text-decoration: none; color: inherit" class="nav-item">
       <span class="material-symbols-outlined" style="font-size: 48px">
         account_circle
       </span>
+      {{userName}}
     </a>
     <a href="cart" style="text-decoration: none; color: inherit">
       <span class="material-symbols-outlined" style="font-size: 48px">
@@ -47,7 +48,7 @@
     <span class="material-symbols-outlined" style="font-size: 32px">
       notifications
     </span>
-    Notifications</a
+    Notifications ({{notificationCount}})</a
   >
   <a *ngIf="!loggedIn" href="login" class="nav-item">
     <span class="material-symbols-outlined" style="font-size: 32px">

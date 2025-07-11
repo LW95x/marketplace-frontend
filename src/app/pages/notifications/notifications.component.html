@@ -2,12 +2,8 @@
   <h1 class="notification-header">Notifications</h1>
   <div class="notification-card">
     <div *ngFor="let notification of notifications" class="notification-card-item">
-        <a [routerLink]="notification.url" style="text-decoration: none; color: inherit;">
-        <div>
-        <button mat-flat-button class="custom-button" (click)="handleDeleteNotification(notification.id)">X</button>
-        </div>
+        <a [routerLink]="notification.url" style="text-decoration: none; color: inherit;" (click)="handleDeleteNotification(notification.id)">
         <p><b>Message:</b> {{notification.message}}</p>
-        <p><b>Read:</b> {{notification.isRead}}</p>
         <b>Sent At:</b> <i>{{ notification.createdAt | date : "HH:mm - dd/MM/yyyy" }}</i>
         </a>
         

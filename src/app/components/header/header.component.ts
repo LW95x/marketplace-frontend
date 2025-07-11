@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Notification } from 'src/app/models/notification.model';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +9,34 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   loggedIn = false;
+  notificationCount: number = 0;
+  userName: string | null = '';
 
-  constructor() {
+  constructor(private notificationService: NotificationsService) {
     const token = localStorage.getItem('token');
     if (token) {
       this.loggedIn = true;
+    }
+    this.userName = localStorage.getItem('username');
+  }
+
+  ngOnInit() {
+    this.loadUserNotifications();
+  }
+
+  loadUserNotifications(): void {
+    const userId = localStorage.getItem('userId');
+
+    if (userId) {
+      this.notificationService.getAllUserNotifications(userId).subscribe({
+        next: (data) => {
+          const count = data.length;
+          localStorage.setItem('notificationCount', count.toString());
+          this.notificationCount = count;
+          console.log('Notifications successfully loaded.');
+        },
+        error: (err) => console.error('Could not find user notifications', err),
+      });
     }
   }
 
