@@ -119,8 +119,9 @@
     width: 10rem;
   }
 
-  .category-button-area {
+  .filter-form {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
   }

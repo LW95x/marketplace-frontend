@@ -11,15 +11,30 @@
       </span>
     </div>
   </div>
-  <div class="category-button-area">
-  <button mat-button [matMenuTriggerFor]="menu" class="category-button">Category</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Furniture</button>
-    <button mat-menu-item>Sports</button>
-    <button mat-menu-item>Clothing</button>
-    <button mat-menu-item>Food & Drink</button>
-  </mat-menu>
-</div>
+
+  <form [formGroup]="filterForm" class="filter-form">
+  <mat-form-field appearance="fill">
+  <mat-label>Category</mat-label>
+  <mat-select formControlName="category">
+    <mat-option [value]="undefined">All</mat-option>
+    <mat-option value="Furniture">Furniture</mat-option>
+    <mat-option value="Sports">Sports</mat-option>
+    <mat-option value="Clothing">Clothing</mat-option>
+    <mat-option value="Food & Drink">Food & Drink</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Min Price (£)</mat-label>
+    <input matInput type="number" formControlName="minPrice" placeholder="e.g. 10" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Max Price (£)</mat-label>
+    <input matInput type="number" formControlName="maxPrice" placeholder="e.g. 100" />
+  </mat-form-field>
+</form>
+  
   <div class="small-deals">
     <div *ngFor="let product of products" class="small-deal-item">
       <a [routerLink]="['/product', product.productId]" style="text-decoration: none; color: inherit;">

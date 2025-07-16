@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CreateProduct, Product, UpdateProduct } from '../models/product.model';
+import { ProductQuery } from '../models/product-query.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,16 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}/products`);
+  getProducts(query: ProductQuery = {}): Observable<Product[]> {
+    let params = new HttpParams();
+
+    Object.entries(query).forEach(([key, value]) => {
+      if (value != null) {
+        params = params.set(key, value);
+      }
+    });
+
+    return this.http.get<Product[]>(`${this.apiUrl}/products`, { params });
   }
 
   getProductById(product_id: string): Observable<Product> {

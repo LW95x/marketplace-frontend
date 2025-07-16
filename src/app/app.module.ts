@@ -19,6 +19,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule }    from '@angular/material/select';
+import { ReactiveFormsModule }from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { SellComponent } from './pages/sell/sell.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
@@ -76,7 +78,9 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

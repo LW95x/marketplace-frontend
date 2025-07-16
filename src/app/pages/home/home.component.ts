@@ -21,7 +21,7 @@ export class HomeComponent {
   }
 
   loadAllProducts(): void {
-    this.productService.getAllProducts().subscribe({
+    this.productService.getProducts().subscribe({
       next: (data) => {
         this.products = data;
         console.log('Products succesfully loaded.');
