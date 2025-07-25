@@ -3,13 +3,14 @@
     <div class="logo">U2U</div>
   </a>
   <div class="search">
-    <input type="text" placeholder="Search for a product..." />
-    <span
-      class="material-symbols-outlined"
-      style="font-size: 32px; margin-left: auto; cursor: pointer"
-    >
-      search
-    </span>
+    <input type="text" placeholder="Search for a specific product..." [(ngModel)]="title" (keydown.enter)="search()"/>
+      <span
+        (click)="search()"
+        class="material-symbols-outlined"
+        style="font-size: 32px; margin-left: auto; cursor: pointer"
+      >
+        search
+      </span>
   </div>
   <div class="profile-cart">
     <a href="profile" style="text-decoration: none; color: inherit" class="nav-item">

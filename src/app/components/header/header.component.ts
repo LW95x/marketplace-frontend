@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Notification } from 'src/app/models/notification.model';
 import { NotificationsService } from 'src/app/services/notifications.service';
+import { ProductsService } from 'src/app/services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +13,9 @@ export class HeaderComponent {
   loggedIn = false;
   notificationCount: number = 0;
   userName: string | null = '';
+  title: string = '';
 
-  constructor(private notificationService: NotificationsService) {
+  constructor(private notificationService: NotificationsService, private router: Router) {
     const token = localStorage.getItem('token');
     if (token) {
       this.loggedIn = true;
@@ -46,6 +49,12 @@ export class HeaderComponent {
       localStorage.removeItem('token');
       this.loggedIn = false;
       window.location.href = '/login';
+    }
+  }
+
+  search(): void {
+    if (this.title && this.title.trim()) {
+      this.router.navigate(['/products'], { queryParams: { title: this.title }});
     }
   }
 }
