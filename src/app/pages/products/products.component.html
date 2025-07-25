@@ -2,8 +2,9 @@
   <h1 class="products-header">Products</h1>
   <div class="search-div">
     <div class="search">
-      <input type="text" placeholder="Search here..." />
+      <input type="text" placeholder="Search for a specific product..." [(ngModel)]="title" (keydown.enter)="search()" (blur)="search()"/>
       <span
+        (click)="search()"
         class="material-symbols-outlined"
         style="font-size: 32px; margin-left: auto; cursor: pointer"
       >
@@ -47,12 +48,12 @@
       />
       <div class="content">
         <h3>{{ product.title }}</h3>
-        <p> {{ product.description }}</p>
-        <p><strong>£{{  product.price }}</strong></p>
-        <p> Quantity: {{ product.quantity }} </p>
-        <p> <b>Seller:</b> {{ product.sellerName }} </p>
-        <p> Category: {{ product.category }} </p>
-      
+        <hr/>
+        <p><b>Description: </b>{{ product.description }}</p>
+        <p><b>Price:</b>£{{ product.price }}</p>
+        <p> <b>Quantity:</b> {{ product.quantity }} </p>
+        <p> <b>Seller:</b> {{ product.sellerName }}</p>
+        <p> <b>Category:</b> {{ product.category }} </p>
       </div>
     </a>
     </div>

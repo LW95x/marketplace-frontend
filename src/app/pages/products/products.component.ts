@@ -15,6 +15,7 @@ export class ProductsComponent {
   filterForm: FormGroup;
   selectedCategory?: string;
   currentPage = 1;
+  title: string = '';
 
   constructor(
     private productService: ProductsService,
@@ -60,5 +61,18 @@ export class ProductsComponent {
   previousPage(): void {
     this.currentPage--;
     this.loadProducts(this.filterForm.value);
+  }
+
+  search(): void {
+    this.productService.getProducts({title: this.title}).subscribe({
+      next: (data) => {
+        this.products = data;
+        console.log('Filtered products succesfully loaded.');
+      },
+      error: (err) => {
+        this.productError = 'Filtered products could not be found.';
+        console.error(err);
+      }
+    })
   }
 }

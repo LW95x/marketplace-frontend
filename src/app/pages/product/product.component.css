@@ -12,7 +12,7 @@
     border-style: solid;
     border-radius: 0.5rem;
     width: 50rem;
-    height: 40rem;
+    height: 50rem;
     margin-right: 1rem;
     display: flex;
     flex-direction: column;
@@ -39,14 +39,14 @@
 }
 
 .content {
-    margin-left: 1.5rem;
+    margin-left: 2rem;
 }
 
 .custom-button {
     background-color: #ECE6F0 !important; 
     transition: background-color 1s;
     width: 10rem; 
-    height: 3rem; 
+    height: 2rem; 
     align-self: flex-end;
     margin-right: 1rem;
     margin-bottom: 1rem;
@@ -71,5 +71,12 @@
     display: flex;
     align-items: center;
     justify-content: flex-start; 
+    margin-left: 1rem;
   }
 
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: flex-end;
+}

@@ -10,15 +10,17 @@
         class="big-product-image"
       />
       <div class="content">
-        <h3 style="font-weight: bold;">{{ product.title }}</h3>
-        <p>{{ product.description }}</p>
-        <p>£{{ product.price }}</p>
-        <p> Quantity: {{ product.quantity }} </p>
+        <h2 style="font-weight: bold;">{{ product.title }}</h2>
+        <p><b>Description: </b>{{ product.description }}</p>
+        <p><b>Price:</b>£{{ product.price }}</p>
+        <p> <b>Quantity:</b> {{ product.quantity }} </p>
         <p> <b>Seller:</b> {{ product.sellerName }}         
         <a [routerLink]="['/messages', product.sellerId]" style="text-decoration: none;">
         (Contact Seller)
         </a></p>
-        <p> Category: {{ product.category }} </p>
+        <p> <b>Category:</b> {{ product.category }} </p>
+        <p><b>Condition:</b> {{ product.condition }}</p>
+        <p> <b>Returns Allowed:</b> {{product.allowReturns == true ? "Yes" : "No"}} </p>
       </div>
       <div class="quantity-container">
         <button mat-icon-button color="primary" (click)="decrement()">
@@ -30,8 +32,10 @@
           <mat-icon style="font-size: 20px;">add</mat-icon>
         </button>
       </div>
+      <div class="button-wrapper">
       <button mat-flat-button class="custom-button" (click)="handleSavedItem(product)">Save Item</button>
       <button mat-flat-button class="custom-button" (click)="handleAddToCart(product, quantity)">Add To Basket</button>
+      </div>
     </div>
   </div>
 </div>
