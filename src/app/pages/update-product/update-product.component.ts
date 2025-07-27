@@ -11,11 +11,10 @@ import { ProductsService } from 'src/app/services/products.service';
 export class UpdateProductComponent {
   categories: string[] = [
     'Electronics',
-    'Fashion',
-    'Home & Garden',
     'Sport',
-    'Toys',
-    'Books',
+    'Furniture',
+    'Food & Drink',
+    'Clothing'
   ];
   conditions: string[] = [
     'New',
@@ -51,7 +50,10 @@ export class UpdateProductComponent {
     this.productId = this.route.snapshot.paramMap.get('id')!;
     this.productService.getProductById(this.productId).subscribe({
       next: (data) => (
-        (this.product = data), (this.existingImageUrls = this.product.imageUrls)
+        this.product = data, 
+        this.existingImageUrls = this.product.imageUrls, 
+        this.formattedDeliveryFee = `£${this.product.deliveryFee.toFixed(2)}`,
+        this.formattedProductPrice = `£${this.product.price?.toFixed(2)}`
       ),
       error: (err) => console.error('Product ID couldnt be found:', err),
     });
@@ -117,10 +119,12 @@ export class UpdateProductComponent {
     let value = input.value.replace(/[^\d.]/g, '');
 
     if (value) {
-      const parsedValue = parseFloat(value).toFixed(2);
-      this.formattedProductPrice = `£${parsedValue}`;
+      const parsedValue = parseFloat(value);
+      this.formattedProductPrice = `£${parsedValue.toFixed(2)}`;
+      this.product.price = parsedValue;
     } else {
       this.formattedProductPrice = '£0.00';
+      this.product.deliveryFee = 0;
     }
 
     input.value = this.formattedProductPrice;
@@ -131,10 +135,12 @@ export class UpdateProductComponent {
     let value = input.value.replace(/[^\d.]/g, '');
 
     if (value) {
-      const parsedValue = parseFloat(value).toFixed(2);
-      this.formattedDeliveryFee = `£${parsedValue}`;
+      const parsedValue = parseFloat(value);
+      this.formattedDeliveryFee = `£${parsedValue.toFixed(2)}`;
+      this.product.deliveryFee = parsedValue;
     } else {
       this.formattedDeliveryFee = '£0.00';
+      this.product.deliveryFee = 0;
     }
 
     input.value = this.formattedDeliveryFee;

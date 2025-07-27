@@ -10,7 +10,7 @@
   <textarea [(ngModel)]="product.description" id="productDesc" class="product-description" name="productDescription"></textarea>
 
   <label for="productName">Price</label>
-  <input [(ngModel)]="product.price" type="text" id="productPrice" name="productPrice" [value]="formattedProductPrice" 
+  <input [(ngModel)]="formattedProductPrice" type="text" id="productPrice" name="productPrice"
   (input)="formatProductPrice($event)">
 
   <label for="productName">Quantity</label>
@@ -54,9 +54,9 @@
   <input 
     type="text" 
     id="deliveryFee" 
-    name="deliveryFee" 
-    [value]="formattedDeliveryFee" 
+    [(ngModel)]="formattedDeliveryFee"
     (input)="formatDeliveryFee($event)"
+    name="deliveryFee" 
   >
 
   <label for="return">Do you want to allow returns?</label>
