@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, UpdateProduct } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
+import { HttpClient, HttpBackend, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-product',
@@ -41,10 +42,16 @@ export class UpdateProductComponent {
   imagePreviews: string[] = [];
   existingImageUrls: string[] = [];
 
+  private blobClient: HttpClient;
+
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductsService
-  ) {}
+    private productService: ProductsService,
+    private http: HttpClient,
+    handler: HttpBackend
+  ) {
+    this.blobClient = new HttpClient(handler);
+  }
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id')!;
@@ -71,7 +78,7 @@ export class UpdateProductComponent {
       { op: 'replace', path: '/condition', value: this.product.condition },
       { op: 'replace', path: '/deliveryFee', value: this.product.deliveryFee},
       { op: 'replace', path: '/allowReturns', value: this.product.allowReturns},
-      { op: 'replace', path: '/imageUrls', value: [ ...this.existingImageUrls, ...this.imagePreviews ]}
+      { op: 'replace', path: '/imageUrls', value: this.product.imageUrls }
     ];
 
     if (userId) {
@@ -99,11 +106,37 @@ export class UpdateProductComponent {
         reader.onload = (e: ProgressEvent<FileReader>) => {
           const result = e.target?.result as string;
           this.imagePreviews.push(result);
+
+          this.uploadImage(file);
         };
 
         reader.readAsDataURL(file);
       });
     }
+  }
+
+  uploadImage(file: File): void {
+   const fileName = `${Date.now()}-${file.name}`; 
+   const sasToken = 'sv=2024-11-04&ss=b&srt=o&sp=wc&se=2027-07-28T18:13:04Z&st=2025-07-28T09:58:04Z&spr=https,http&sig=uB8VbdTVfTMTxklGHPIhoWZxypBPo2PXY8Y5u7q1B%2F8%3D';
+   const blobUrl = `https://marketplaceapistorage.blob.core.windows.net/user-avatars/${fileName}?${sasToken}`;
+
+   const headers = new HttpHeaders({
+  'x-ms-blob-type': 'BlockBlob',
+  'x-ms-version': '2024-11-04',
+  'Content-Type': file.type,
+});
+
+this.blobClient.put(blobUrl, file, { headers })
+  .subscribe({
+    next: () => {
+      console.log('Image was uploaded to storage successfully.');
+      const publicUrl = `https://marketplaceapistorage.blob.core.windows.net/user-avatars/${fileName}`;
+      this.product.imageUrls.push(publicUrl);
+    },
+    error: (err: Error) => {
+      console.error('Image upload failed,', err);
+    }
+   })
   }
 
   removeExistingImage(index: number): void {
