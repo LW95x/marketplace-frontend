@@ -1,0 +1,35 @@
+.slider {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: rgb(52, 50, 50);
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  line-height: 1;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: white;
+  font-weight: bolder;
+  font-size: 60px;
+}
+
+.slider-button.prev { 
+    left: 10px; 
+}
+.slider-button.next { 
+    right: 10px;
+}

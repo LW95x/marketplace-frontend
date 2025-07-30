@@ -29,7 +29,7 @@
 
 .products-card-image {
     width: 24rem;
-    height: 10rem;
+    height: 20rem;
     object-fit: cover;
     flex-shrink: 0;
     padding: 1rem;

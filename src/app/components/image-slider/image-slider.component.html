@@ -1,0 +1,13 @@
+<div class="slider">
+  <img
+    [src]="images.length > 0 ? images[current] : placeholder"
+    [alt]="'Slide ' + (current + 1)"
+    class="slider-image"
+  />
+
+  <button class="slider-button prev" type="button" (click)="previous()">‹
+  </button>
+
+  <button class="slider-button next" type="button" (click)="next()">›
+  </button>
+</div>

@@ -3,18 +3,17 @@
     <div *ngFor="let product of userProducts" class="products-card">
         <div class="products-card-item">
             <img
-            src="https://placehold.co/200x200"
+            [src]="product.imageUrls.length > 0 ? product.imageUrls[0] : 'https://placehold.co/200x200'"
             alt="Product Image"
             class="products-card-image"
           />
           <div class="text-content">
-            <h1 style="margin-top: 1rem">{{ product.title }}</h1>
-            Description: <p>{{ product.description }}</p>
-            Seller: <p>{{ product.sellerName }}</p>
-            Category: <p>{{ product.category }}</p>
-            Unit Price: <p>{{product.price}}</p>
-            Quantity: <p>{{product.quantity}}</p>
-            Image URLs: {{product.imageUrls}}
+         <h1>{{ product.title }}</h1>
+        <p><b>Description: </b>{{ product.description }}</p>
+        <p><b>Price:</b> £{{ product.price }}</p>
+        <p> <b>Quantity:</b> {{ product.quantity }} </p>
+        <p> <b>Seller:</b> {{ product.sellerName }}</p>
+        <p> <b>Category:</b> {{ product.category }} </p>
           </div>
           <div class="button-container">
           <button mat-flat-button class="custom-button-del" (click)="handleDeletion(product)">Delete Product</button>

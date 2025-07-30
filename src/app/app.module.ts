@@ -38,6 +38,7 @@ import { ConversationComponent } from './pages/conversation/conversation.compone
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { UpdateProductComponent } from './pages/update-product/update-product.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     ConversationComponent,
     NotificationsComponent,
     UpdateProductComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ImageSliderComponent
   ],
   imports: [
     BrowserModule,
