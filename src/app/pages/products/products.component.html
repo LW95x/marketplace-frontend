@@ -40,7 +40,7 @@
   
   <div class="small-deals">
     <div *ngFor="let product of products" class="small-deal-item">
-      <app-image-slider [images]="product.imageUrls"/>
+      <app-image-slider [images]="product.imageUrls" height="200px"/>
       <a [routerLink]="['/product', product.productId]" style="text-decoration: none; color: inherit;">
       <div class="content">
         <h3>{{ product.title }}</h3>

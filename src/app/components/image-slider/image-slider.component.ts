@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-image-slider',
@@ -8,6 +8,12 @@ import { Component, Input } from '@angular/core';
 export class ImageSliderComponent {
   @Input() images: string[] = [];
   @Input() placeholder = 'https://placehold.co/200x200';
+  @Input() height = '200px';
+
+  @HostBinding('style.height') get hostHeight() {
+    return this.height;
+  }
+  
   current = 0;
 
   previous() {

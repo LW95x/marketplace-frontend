@@ -15,7 +15,7 @@ export class UpdateProductComponent {
     'Sport',
     'Furniture',
     'Food & Drink',
-    'Clothing'
+    'Clothing',
   ];
   conditions: string[] = [
     'New',
@@ -57,10 +57,10 @@ export class UpdateProductComponent {
     this.productId = this.route.snapshot.paramMap.get('id')!;
     this.productService.getProductById(this.productId).subscribe({
       next: (data) => (
-        this.product = data, 
-        this.existingImageUrls = this.product.imageUrls, 
-        this.formattedDeliveryFee = `£${this.product.deliveryFee.toFixed(2)}`,
-        this.formattedProductPrice = `£${this.product.price?.toFixed(2)}`
+        (this.product = data),
+        (this.existingImageUrls = this.product.imageUrls),
+        (this.formattedDeliveryFee = `£${this.product.deliveryFee.toFixed(2)}`),
+        (this.formattedProductPrice = `£${this.product.price?.toFixed(2)}`)
       ),
       error: (err) => console.error('Product ID couldnt be found:', err),
     });
@@ -76,21 +76,26 @@ export class UpdateProductComponent {
       { op: 'replace', path: '/quantity', value: this.product.quantity },
       { op: 'replace', path: '/category', value: this.product.category },
       { op: 'replace', path: '/condition', value: this.product.condition },
-      { op: 'replace', path: '/deliveryFee', value: this.product.deliveryFee},
-      { op: 'replace', path: '/allowReturns', value: this.product.allowReturns},
-      { op: 'replace', path: '/imageUrls', value: this.product.imageUrls }
+      { op: 'replace', path: '/deliveryFee', value: this.product.deliveryFee },
+      {
+        op: 'replace',
+        path: '/allowReturns',
+        value: this.product.allowReturns,
+      },
+      { op: 'replace', path: '/imageUrls', value: this.product.imageUrls },
     ];
 
     if (userId) {
-      this.productService.updateProduct(userId, this.productId, jsonPatchDocuments)
-      .subscribe({
-        next: () => {
-          console.log('User product was succesfully updated.');
-        },
-        error: (err) => {
-          console.error('Failed to update user product.', err);
-        }
-      })
+      this.productService
+        .updateProduct(userId, this.productId, jsonPatchDocuments)
+        .subscribe({
+          next: () => {
+            console.log('User product was succesfully updated.');
+          },
+          error: (err) => {
+            console.error('Failed to update user product.', err);
+          },
+        });
     }
   }
 
@@ -116,27 +121,27 @@ export class UpdateProductComponent {
   }
 
   uploadImage(file: File): void {
-   const fileName = `${Date.now()}-${file.name}`; 
-   const sasToken = 'sv=2024-11-04&ss=b&srt=o&sp=wc&se=2027-07-28T18:13:04Z&st=2025-07-28T09:58:04Z&spr=https,http&sig=uB8VbdTVfTMTxklGHPIhoWZxypBPo2PXY8Y5u7q1B%2F8%3D';
-   const blobUrl = `https://marketplaceapistorage.blob.core.windows.net/user-avatars/${fileName}?${sasToken}`;
+    const fileName = `${Date.now()}-${file.name}`;
+    const sasToken =
+      'sv=2024-11-04&ss=b&srt=o&sp=wc&se=2027-07-28T18:13:04Z&st=2025-07-28T09:58:04Z&spr=https,http&sig=uB8VbdTVfTMTxklGHPIhoWZxypBPo2PXY8Y5u7q1B%2F8%3D';
+    const blobUrl = `https://marketplaceapistorage.blob.core.windows.net/user-avatars/${fileName}?${sasToken}`;
 
-   const headers = new HttpHeaders({
-  'x-ms-blob-type': 'BlockBlob',
-  'x-ms-version': '2024-11-04',
-  'Content-Type': file.type,
-});
+    const headers = new HttpHeaders({
+      'x-ms-blob-type': 'BlockBlob',
+      'x-ms-version': '2024-11-04',
+      'Content-Type': file.type,
+    });
 
-this.blobClient.put(blobUrl, file, { headers })
-  .subscribe({
-    next: () => {
-      console.log('Image was uploaded to storage successfully.');
-      const publicUrl = `https://marketplaceapistorage.blob.core.windows.net/user-avatars/${fileName}`;
-      this.product.imageUrls.push(publicUrl);
-    },
-    error: (err: Error) => {
-      console.error('Image upload failed,', err);
-    }
-   })
+    this.blobClient.put(blobUrl, file, { headers }).subscribe({
+      next: () => {
+        console.log('Image was uploaded to storage successfully.');
+        const publicUrl = `https://marketplaceapistorage.blob.core.windows.net/user-avatars/${fileName}`;
+        this.product.imageUrls.push(publicUrl);
+      },
+      error: (err: Error) => {
+        console.error('Image upload failed,', err);
+      },
+    });
   }
 
   removeExistingImage(index: number): void {

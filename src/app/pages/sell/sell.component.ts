@@ -8,11 +8,10 @@ import { Component } from '@angular/core';
 export class SellComponent {
   categories: string[] = [
     'Electronics',
-    'Fashion',
-    'Home & Garden',
-    'Sports',
-    'Toys',
-    'Books',
+    'Sport',
+    'Furniture',
+    'Food & Drink',
+    'Clothing',
   ];
   conditions: string[] = [
     'New',
@@ -82,5 +81,12 @@ export class SellComponent {
     }
 
     input.value = this.formattedDeliveryFee;
+  }
+
+  sell(): void {
+    const userId = localStorage.getItem('userId');
+
+    
+
   }
 }

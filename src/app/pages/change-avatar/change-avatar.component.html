@@ -5,7 +5,15 @@
     <form class="change-avatar-form" (ngSubmit)="sendAvatarChangeRequest()" #form="ngForm">
 
     <label for="newAvatar">New Avatar</label>
-    <input type="file" id="newAvatar" name="newAvatar" accept="image/*" (change)="onFileSelect($event)" required>
+    <input type="file" id="newAvatar" name="newAvatar" accept="image/*" (change)="onImageSelection($event)" required>
+
+    <label for="newImages">Avatar Preview</label>
+<div *ngIf="imagePreviews.length > 0" class="preview-container">
+  <div *ngFor="let img of imagePreviews; let i = index" class="preview-item">
+    <img [src]="img" alt="New Image Preview" class="image-preview" />
+    <button type="button" (click)="removeImage(i)">X</button>
+  </div>
+</div>
   
     <button mat-flat-button class="custom-button" type="submit">Change Avatar</button>
     </form>

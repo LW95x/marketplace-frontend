@@ -4,11 +4,7 @@
   </div>
   <div *ngIf="product" class="big-deals">
     <div class="big-deal-item">
-      <img
-        src="https://placehold.co/200x200"
-        alt="Product Image"
-        class="big-product-image"
-      />
+      <app-image-slider [images]="product.imageUrls" height="300px"/>
       <div class="content">
         <h2 style="font-weight: bold;">{{ product.title }}</h2>
         <p><b>Description: </b>{{ product.description }}</p>

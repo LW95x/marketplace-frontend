@@ -18,13 +18,13 @@
 
 
     <label for="category">Category:</label>
-    <select id="category" [(ngModel)]="selectedCategory">
+    <select id="category" name="category" [(ngModel)]="selectedCategory">
       <option value="" disabled>Select a category</option>
       <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
     </select>
 
     <label for="condition">Condition:</label>
-    <select id="condition" [(ngModel)]="selectedCondition">
+    <select id="condition" name="condition" [(ngModel)]="selectedCondition">
       <option value="" disabled>Select a condition</option>
       <option *ngFor="let condition of conditions" [value]="condition">{{ condition }}</option>
     </select>
@@ -50,7 +50,7 @@
   >
 
   <label for="return">Do you want to allow returns?</label>
-    <select id="return" [(ngModel)]="selectedReturn">
+    <select id="return" name="return" [(ngModel)]="selectedReturn">
       <option value="" disabled>Select an option</option>
       <option *ngFor="let returnOption of returns" [value]="returnOption">{{ returnOption }}</option>
     </select>
