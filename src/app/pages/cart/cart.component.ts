@@ -13,6 +13,8 @@ export class CartComponent {
   userCart: Cart | null = null;
   cartError: string | null = null;
 
+  previousQuantities: { [cartItemId: string]: number } = {};
+
   constructor(
     private cartService: CartsService,
     private productService: ProductsService
@@ -107,6 +109,23 @@ export class CartComponent {
       }
 
       this.editShoppingCartItemQuantity(cartItem, previousQuantity, false);
+    }
+  }
+
+  onQuantityChange(cartItem: CartItem, previousQuantity: number): void {
+    const newQuantity = Number(cartItem.quantity);
+
+    if (newQuantity !== previousQuantity && cartItem.quantity > 0) {
+      const priceDiff = (newQuantity - previousQuantity) * cartItem.price;
+
+      if (this.userCart) {
+        this.userCart.totalPrice += priceDiff;
+      }
+
+      this.editShoppingCartItemQuantity(cartItem, previousQuantity);
+      cartItem.quantity = newQuantity;
+    } else {
+      cartItem.quantity = previousQuantity;
     }
   }
 

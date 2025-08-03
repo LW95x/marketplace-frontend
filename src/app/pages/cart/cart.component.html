@@ -16,7 +16,7 @@
               <button mat-icon-button color="primary" (click)="decrement(cartItem)">
                 <mat-icon style="font-size: 20px;">remove</mat-icon>
               </button>
-                <input matInput type="number" [(ngModel)]="cartItem.quantity" class="quantity">
+                <input matInput type="number" [(ngModel)]="cartItem.quantity" (blur)="onQuantityChange(cartItem, previousQuantities[cartItem.cartItemId])" (focus)="previousQuantities[cartItem.cartItemId] = cartItem.quantity" [ngModelOptions]="{ standalone: true }"class="quantity">
               <button mat-icon-button color="primary" (click)="increment(cartItem)">
                 <mat-icon style="font-size: 20px;">add</mat-icon>
               </button>
