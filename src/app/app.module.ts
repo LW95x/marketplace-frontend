@@ -39,6 +39,7 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { UpdateProductComponent } from './pages/update-product/update-product.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { ImageSliderComponent } from './components/image-slider/image-slider.com
     MatInputModule,
     FormsModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxStripeModule.forRoot('pk_test_51RsL8M4Jsxqrj8bAghH7eSOztjaZK4wSXOikYjNywGP9nz9g7cIymCqPqtexcmbpGtROcGwNMIU9Py3MRBeRcaS700OKg8gfXM')
   ],
   providers: [
     {

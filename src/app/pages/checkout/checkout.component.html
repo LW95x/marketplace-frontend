@@ -3,13 +3,18 @@
     <div class="checkout-card">
         <div class="checkout-card-item">
           <div class="text-content">
-            <label>Address:</label>
-            <input>
           </div>
-          <div>
-          Stripe API implementation here
-        </div>
-        </div>
+          <form (ngSubmit)="pay()">
+            <label>Address:</label>
+            <input [(ngModel)]="address" type="text" id="address" name="address">
+          <ngx-stripe-card
+            [options]="cardOptions"
+            [elementsOptions]="elementsOptions">
+          </ngx-stripe-card>
+          <button type="submit">
+            Complete Order
+          </button>
+        </form>
     </div>
     <button mat-flat-button class="custom-button">Order</button>
 </div>

@@ -13,6 +13,7 @@ export interface Order {
 
 export interface CreateOrder {
   address: string;
+  stripePaymentId: string;
 }
 
 export interface UpdateOrder {
