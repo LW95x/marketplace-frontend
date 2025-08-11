@@ -21,3 +21,8 @@ export interface UpdateOrder {
   op: 'replace';
   value: any;
 }
+
+export interface CreatePaymentIntent {
+  amount: string;
+  currency: string;
+}
