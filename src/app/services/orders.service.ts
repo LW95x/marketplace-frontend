@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateOrder, CreatePaymentIntent, Order, UpdateOrder } from '../models/order.model';
+import { CreateOrder, CreatePaymentIntent, CreatePaymentIntentResponse, Order, UpdateOrder } from '../models/order.model';
 import { SoldItem } from '../models/order-item.model';
 
 @Injectable({
@@ -36,7 +36,7 @@ export class OrdersService {
     return this.http.delete<void>(`${this.apiUrl}/users/${user_id}/orders/${order_id}`);
   }
 
-  createPaymentIntent(user_id: string, paymentIntentDto: CreatePaymentIntent): Observable<CreatePaymentIntent> {
-    return this.http.post<CreatePaymentIntent>(`${this.apiUrl}/users/${user_id}/orders/create-payment-intent`, paymentIntentDto);
+  createPaymentIntent(user_id: string, paymentIntentDto: CreatePaymentIntent): Observable<CreatePaymentIntentResponse> {
+    return this.http.post<CreatePaymentIntentResponse>(`${this.apiUrl}/users/${user_id}/orders/create-payment-intent`, paymentIntentDto);
   }
 }

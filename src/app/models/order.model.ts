@@ -23,6 +23,10 @@ export interface UpdateOrder {
 }
 
 export interface CreatePaymentIntent {
-  amount: string;
+  amount: number;
   currency: string;
+}
+
+export interface CreatePaymentIntentResponse {
+  clientSecret: string;
 }
