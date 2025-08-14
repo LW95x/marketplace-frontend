@@ -5,16 +5,26 @@
           <div class="text-content">
           </div>
           <form (ngSubmit)="pay()">
-            <label>Address:</label>
-            <input [(ngModel)]="address" type="text" id="address" name="address">
+            <div class="form-field">
+            <label>House Number/Building Name:</label>
+            <input [(ngModel)]="houseNumber" type="text" id="houseNumber" name="houseNumber" required>
+            </div>
+
+            <div class="form-field">
+            <label>Street:</label>
+            <input [(ngModel)]="street" type="text" id="street" name="street" required>
+            </div>
+
+            <div class="form-field">
+            <label>Post Code:</label>
+            <input [(ngModel)]="postCode" type="text" id="postCode" name="postCode" required>
+            </div>
+
           <ngx-stripe-card
             [options]="cardOptions"
             [elementsOptions]="elementsOptions">
           </ngx-stripe-card>
-          <button type="submit">
-            Complete Order
-          </button>
+          <button mat-flat-button class="custom-button" type="submit">Complete Order</button>
         </form>
     </div>
-    <button mat-flat-button class="custom-button">Order</button>
 </div>

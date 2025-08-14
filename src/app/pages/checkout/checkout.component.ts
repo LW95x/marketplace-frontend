@@ -20,9 +20,11 @@ export class CheckoutComponent {
   elementsOptions: StripeElementsOptions = { locale: 'en-GB' };
   cardOptions: StripeCardElementOptions = {
     hidePostalCode: false,
-    style: { base: { fontSize: '16px ' } },
+    style: { base: { fontSize: '16px' } },
   };
-  address: string = '';
+  houseNumber: string = '';
+  street: string = '';
+  postCode: string = '';
   cart: Cart | null = null;
   stripePaymentId: string = '';
 
@@ -89,19 +91,26 @@ export class CheckoutComponent {
                       this.paymentError = 'Payment failed to process.';
                       return;
                     }
-
                     this.stripePaymentId = paymentIntent.id;
 
                     const orderDto: CreateOrder = {
-                      address: this.address,
+                      address: '',
                       stripePaymentId: this.stripePaymentId,
                     };
 
                     this.orderService.addNewOrder(userId, orderDto).subscribe({
-                      next: () => {
+                      next: (order) => {
                         this.isLoading = false;
                         this.isSuccess = true;
                         console.log('Order was successfully created.');
+                        this.orderService.updateOrder(userId, order.orderId, [{ path: 'status', op: 'replace', value: 'Completed' }]).subscribe({
+                          next: () => {
+                            console.log('Order status updated to completed.');
+                          },
+                          error: (err) => {
+                            console.error('Failed to update order status', err);
+                          }
+                        })
                       },
                       error: (err) => {
                         this.isLoading = false;

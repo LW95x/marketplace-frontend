@@ -94,6 +94,7 @@ export class CartComponent {
 
     if (this.userCart) {
       this.userCart.totalPrice += cartItem.price;
+      cartItem.totalPrice = cartItem.price * cartItem.quantity;
     }
 
     this.editShoppingCartItemQuantity(cartItem, previousQuantity, false);
@@ -106,6 +107,7 @@ export class CartComponent {
 
       if (this.userCart) {
         this.userCart.totalPrice -= cartItem.price;
+        cartItem.totalPrice = cartItem.price * cartItem.quantity;
       }
 
       this.editShoppingCartItemQuantity(cartItem, previousQuantity, false);

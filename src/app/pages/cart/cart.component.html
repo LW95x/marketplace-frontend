@@ -9,9 +9,10 @@
           />
           <div class="text-content">
             <h1 style="margin-top: 1rem">{{ cartItem.productName}}</h1>
-            Description: <p>{{ cartItem.description }}</p>
-            Seller: <p>{{ cartItem.sellerName }}</p>
-            Category: <p>{{ cartItem.category }}</p>
+            <p><b>Unit Price:</b> £{{ cartItem.price }}</p>
+            <p><b>Description:</b> {{ cartItem.description }}</p>
+            <p><b>Seller:</b> {{ cartItem.sellerName }} (Contact seller)</p>
+            <p><b>Category:</b> {{ cartItem.category }}</p>
             <div class="quantity-container">
               <button mat-icon-button color="primary" (click)="decrement(cartItem)">
                 <mat-icon style="font-size: 20px;">remove</mat-icon>
@@ -23,7 +24,7 @@
             </div>
             <button mat-flat-button class="custom-button-del" (click)="handleDeletion(cartItem)">Delete Item</button>
           </div>
-          <h2 style="margin-top: 1rem; margin-left: auto; margin-right: 2rem;">Unit Price: £{{cartItem.price}}</h2>
+          <h2 style="margin-top: 1rem; margin-left: auto; margin-right: 2rem;">Total Price: £{{cartItem.totalPrice}}</h2>
         </div>
     </div>
     <h1 class="total-price">Total Price: £{{ userCart?.totalPrice }}</h1>

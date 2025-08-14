@@ -8,19 +8,18 @@
             class="order-card-image"
           />
           <div class="text-content">
-            Delivery Address: <p>{{ order.address }}</p>
-            Date of Order:<p>{{ order.date }}</p>
-            Order Status:<p>{{ order.status }}</p>
-            Order Total Price:<p>{{ order.totalPrice }}</p>
-            ===
-            <div *ngFor="let item of order.orderItems" class="order-card-item">
-                Title: <p>{{item.productTitle}}</p>
-                Category: {{ item.productCategory}}
-                Description: {{ item.productDescription}}
-                Seller Name: {{item.productSellerName}}
-                Price: <p>{{item.price}}</p>
-                Total Price: <p>{{item.totalPrice}}</p>
-                Quantity: <p>{{item.quantity}}</p>
+            <p><b>Delivery Address:</b> {{ order.address }}</p>
+            <p><b>Order Date:</b> {{ order.date | date: 'HH:mm - dd/MM/yyyy'}}</p>
+            <p><b>Order Status:</b> {{ order.status }}</p>
+            <p><b>Order Total Price:</b> £{{ order.totalPrice }}</p>
+            <div *ngFor="let item of order.orderItems">
+                <p>Title: {{item.productTitle}}</p>
+                <p>Category: {{ item.productCategory}}</p>
+                <p>Description: {{ item.productDescription}}</p>
+                <p>Seller Name: {{item.productSellerName}}</p>
+                <p>Price: {{item.price}}</p>
+                <p>Total Price: {{item.totalPrice}}</p>
+                <p>Quantity: {{item.quantity}}</p>
             </div>
           </div>
         </div>
