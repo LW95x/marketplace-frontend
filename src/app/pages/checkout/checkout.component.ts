@@ -50,6 +50,14 @@ export class CheckoutComponent {
     this.paymentError = null;
     this.isLoading = true;
 
+    const convertedPostcode = this.postCodeConverter(this.postCode);
+
+    if (!this.postCodeChecker(convertedPostcode)) {
+      this.paymentError = 'Post Code provided was invalid.';
+      this.isLoading = false;
+      return;
+    }
+
     this.cartService.getUserShoppingCart(userId).subscribe({
       next: (data) => {
         this.cart = data;
@@ -94,7 +102,7 @@ export class CheckoutComponent {
                     this.stripePaymentId = paymentIntent.id;
 
                     const orderDto: CreateOrder = {
-                      address: '',
+                      address: 'Address',
                       stripePaymentId: this.stripePaymentId,
                     };
 
@@ -140,5 +148,17 @@ export class CheckoutComponent {
         console.error('Could not fetch users shopping cart.', err);
       },
     });
+  }
+
+  postCodeConverter(postCode: string): string {
+    const convertedString = (postCode || '').toUpperCase().replace(/\s+/g, '');
+    if (convertedString.length < 5) return convertedString;
+    return `${convertedString.slice(0, -3)} ${convertedString.slice(-3)}`; 
+  }
+
+  postCodeChecker(convertedPostcode: string): boolean {
+    const postcodeRegex =  /^([A-Za-z]{2}[\d]{1,2}[A-Za-z]?)[\s]+([\d][A-Za-z]{2})$/;
+
+    return postcodeRegex.test(convertedPostcode);
   }
 }
