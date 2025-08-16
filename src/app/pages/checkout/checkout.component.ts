@@ -53,6 +53,7 @@ export class CheckoutComponent {
     const convertedPostcode = this.postCodeConverter(this.postCode);
 
     if (!this.postCodeChecker(convertedPostcode)) {
+      console.error('Post Code provided was in an invalid format.');
       this.paymentError = 'Post Code provided was invalid.';
       this.isLoading = false;
       return;
@@ -102,7 +103,7 @@ export class CheckoutComponent {
                     this.stripePaymentId = paymentIntent.id;
 
                     const orderDto: CreateOrder = {
-                      address: 'Address',
+                      address: this.houseNumber + ', ' + this.street + ', ' + this.postCode,
                       stripePaymentId: this.stripePaymentId,
                     };
 

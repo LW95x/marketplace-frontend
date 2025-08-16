@@ -2,8 +2,6 @@
     <h1 class="checkout-header">Checkout</h1>
     <div class="checkout-card">
         <div class="checkout-card-item">
-          <div class="text-content">
-          </div>
           <form (ngSubmit)="pay()">
             <div class="form-field">
             <label>House Number/Building Name:</label>
@@ -25,6 +23,7 @@
             [elementsOptions]="elementsOptions">
           </ngx-stripe-card>
           <button mat-flat-button class="custom-button" type="submit">Complete Order</button>
+          {{paymentError}}
         </form>
     </div>
 </div>

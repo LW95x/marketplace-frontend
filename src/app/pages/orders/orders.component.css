@@ -25,6 +25,19 @@
     height: 60rem;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+}
+
+.single-order-card-item {
+    border-color: #ECE6F0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    width: 80rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
 }
 
 .order-card-image {
@@ -71,3 +84,26 @@
     background-color: #D6CFDB;
 }
 
+.item-row {
+  display: flex;         
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.item-media {
+  flex: 0 0 180px;
+}
+
+.item-table {
+  flex: 1 1 auto;
+  max-width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.item-table th,
+.item-table td {
+  padding: 16px 32px; 
+}
