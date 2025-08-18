@@ -2,22 +2,40 @@
     <h1 class="sold-items-header">Sold Items</h1>
     <div *ngFor="let soldItem of soldItems" class="sold-items-card">
         <div class="sold-items-card-item">
-            <img
-            src="https://placehold.co/200x200"
-            alt="Product Image"
-            class="sold-items-card-image"
-          />
-          <div class="text-content">
-            <h1 style="margin-top: 1rem">{{ soldItem.title }}</h1>
-            Description: <p>{{ soldItem.description }}</p>
-            Category: <p>{{ soldItem.category }}</p>
-            Unit Price: <p>{{soldItem.price}}</p>
-            Quantity: <p>{{soldItem.quantity}}</p>
-            Buyer: <p>{{soldItem.buyerName}}</p>
-            Order Date: <p>{{soldItem.orderDate}}</p>
-            Order Status: <p>{{soldItem.status}}</p>
-            Total Price: <p>{{soldItem.totalPrice}}</p>
-          </div>
+          <table class="item-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Buyer Name</th>
+                <th>Buyer Address</th>
+                <th>Order Date</th>
+                <th>Order Status</th>
+                <th>Order ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ soldItem.title }}</td>
+                <td>{{ soldItem.category }}</td>
+                <td>{{ soldItem.description }}</td>
+                <td>£{{soldItem.price}}</td>
+                <td>{{soldItem.quantity}}</td>
+                <td>£{{soldItem.totalPrice}}</td>
+                <td>
+                  {{soldItem.buyerName}}
+                </td>
+                              <td>{{soldItem.address}}</td>
+                <td>{{ soldItem.orderDate | date : "HH:mm - dd/MM/yyyy" }}</td>
+                <td>{{soldItem.status}}</td>
+                <td>{{soldItem.productId}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
     </div>
 </div>

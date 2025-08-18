@@ -4,15 +4,11 @@
   </div>
   <div class="big-deals">
     <div class="big-deal-item" *ngFor="let deal of bigDealsOfTheDay">
+      <app-image-slider [images]="deal.imageUrls" height="200px"/>
       <a
         [routerLink]="['/product', deal.productId]"
         style="text-decoration: none; color: inherit"
       >
-        <img
-          src="https://placehold.co/200x200"
-          alt="Product Image"
-          class="big-product-image"
-        />
         <div class="content">
           <h3>{{ deal.title }}</h3>
           <p>{{ deal.description }}</p>
@@ -28,15 +24,11 @@
   </div>
   <div class="small-deals">
     <div class="small-deal-item" *ngFor="let deal of smallDealsOfTheDay">
+      <app-image-slider [images]="deal.imageUrls" height="150px"/>
       <a
         [routerLink]="['/product', deal.productId]"
         style="text-decoration: none; color: inherit"
       >
-        <img
-          src="https://placehold.co/200x200"
-          alt="Product Image"
-          class="small-product-image"
-        />
         <div class="content">
           <h3>{{ deal.title }}</h3>
           <p>{{ deal.description }}</p>

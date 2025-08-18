@@ -26,7 +26,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 const routes: Routes = [
   { path: 'login', component: LoginRegisterComponent },
   { path: 'reset-password', component: PasswordResetComponent },
-
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   {
     path: '',
     canActivateChild: [authGuard],

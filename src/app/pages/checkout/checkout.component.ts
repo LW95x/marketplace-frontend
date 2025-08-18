@@ -6,8 +6,10 @@ import {
 } from '@stripe/stripe-js';
 import { StripeCardComponent, StripeService } from 'ngx-stripe';
 import { Cart } from 'src/app/models/cart.model';
+import { CreateNotification } from 'src/app/models/notification.model';
 import { CreateOrder, CreatePaymentIntent } from 'src/app/models/order.model';
 import { CartsService } from 'src/app/services/carts.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { OrdersService } from 'src/app/services/orders.service';
 
 @Component({
@@ -35,7 +37,8 @@ export class CheckoutComponent {
   constructor(
     private stripeService: StripeService,
     private orderService: OrdersService,
-    private cartService: CartsService
+    private cartService: CartsService,
+    private notificationService: NotificationsService
   ) {}
 
   pay() {
@@ -112,6 +115,19 @@ export class CheckoutComponent {
                         this.isLoading = false;
                         this.isSuccess = true;
                         console.log('Order was successfully created.');
+
+                        const notificationOrderPlaced:
+                        CreateNotification = {
+                          message: `Your order was succesfully placed!`,
+                          url: `/orders`
+                        }
+
+                        this.notificationService.addUserNotification(userId, notificationOrderPlaced).subscribe({
+                          next: () => {
+                            console.log('Notification successfully sent.');
+                          }
+                        });
+
                         this.orderService.updateOrder(userId, order.orderId, [{ path: 'status', op: 'replace', value: 'Completed' }]).subscribe({
                           next: () => {
                             console.log('Order status updated to completed.');

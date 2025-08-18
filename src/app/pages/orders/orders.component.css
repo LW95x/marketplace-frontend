@@ -22,7 +22,6 @@
     border-style: solid;
     border-radius: 0.5rem;
     width: 100%;
-    height: 60rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -96,14 +95,43 @@
 }
 
 .item-table {
-  flex: 1 1 auto;
-  max-width: 100%;
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
   border-radius: 0.25rem;
   border: 1px solid black;
   padding: 1rem;
+  table-layout: fixed;
 }
 
 .item-table th,
 .item-table td {
   padding: 16px 32px; 
+  white-space: normal;     
+  overflow-wrap: anywhere;   
+  hyphens: auto; 
+}
+
+.item-table th:nth-child(3),
+.item-table td:nth-child(3) { width: 20ch; }
+
+.saved-item-image-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.saved-item-image {
+  flex: 0 0 20rem;
+  display: block;
+}
+
+:host ::ng-deep app-image-slider.saved-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+p {
+    margin-left: 1rem;
 }
