@@ -2,8 +2,8 @@
   <h1 class="conversation-header">Conversation</h1>
 
   <form (ngSubmit)="sendMessage(message)">
-    <div *ngIf="user" class="text-content">
-      <h3 class="conversation-sub-header">To: {{ user.userName }}</h3>
+    <div *ngIf="receiverUser" class="text-content">
+      <h3 class="conversation-sub-header">To: {{ receiverUser.userName }}</h3>
       <textarea
         id="message"
         [(ngModel)]="message"
@@ -18,6 +18,9 @@
   <div class="conversation-card">
       <div *ngFor="let message of conversation" class="conversation-card-item" [ngStyle]="{'background-color': message.receiverId === userId ? '#D6CFDB' : 'white' }">
     <div class="text-content">
+      <div *ngIf="senderUser">
+        <img [src]="senderUser.imageUrl" alt="User Avatar" class="user-image">
+      </div>
         <b>
           {{ message.senderId === userId ? 'To' : 'From' }}
           {{ message.senderId === userId ? message.receiverUsername : message.senderUsername }}

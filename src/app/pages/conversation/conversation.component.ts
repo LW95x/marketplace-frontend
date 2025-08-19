@@ -17,7 +17,8 @@ import { v4 as uuid } from 'uuid';
 export class ConversationComponent implements OnInit, OnDestroy {
   receiverId!: string;
   conversation: Message[] = [];
-  user!: User;
+  senderUser!: User;
+  receiverUser!: User;
   userId: string | null = null;
 
   message: string = '';
@@ -36,7 +37,8 @@ export class ConversationComponent implements OnInit, OnDestroy {
     this.receiverId = this.route.snapshot.paramMap.get('id')!;  
     if (this.receiverId) {
       this.loadSingleConversation();
-      this.loadSingleUser();
+      this.loadReceiverUser();
+      this.loadSenderUser();
   
       this.signalRService.onMessageReceived((msg: Message) => {
         this.conversation.unshift(msg);
@@ -65,12 +67,26 @@ export class ConversationComponent implements OnInit, OnDestroy {
   }
  }
 
- loadSingleUser(): void {
+ loadReceiverUser(): void {
   if (this.receiverId) {
     this.userService.getSingleUser(this.receiverId).subscribe({
       next: (data) => {
-        this.user = data;
-        console.log('User successfully loaded.');
+        this.receiverUser = data;
+        console.log('Receiver User successfully loaded.');
+      },
+      error: (err) => {
+        console.error('User could not be loaded.', err);
+      }
+    })
+  }
+ }
+
+  loadSenderUser(): void {
+  if (this.userId) {
+    this.userService.getSingleUser(this.userId).subscribe({
+      next: (data) => {
+        this.senderUser = data;
+        console.log('Sender User successfully loaded.');
       },
       error: (err) => {
         console.error('User could not be loaded.', err);
@@ -89,8 +105,8 @@ export class ConversationComponent implements OnInit, OnDestroy {
       sentTime: new Date(),
       senderId: senderId!,
       receiverId: this.receiverId,
-      senderUsername: this.user?.userName,
-      receiverUsername: this.user?.userName
+      senderUsername: this.senderUser?.userName,
+      receiverUsername: this.receiverUser?.userName
     }
 
     this.conversation.unshift(tempMsg);

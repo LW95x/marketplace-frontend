@@ -89,3 +89,9 @@ hr {
   width: 100%;
   border-top: 1px solid black;
 }
+
+.user-image {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 0.25rem;
+}
