@@ -16,6 +16,7 @@ export class ProductComponent {
   productId!: string;
   product!: Product;
   quantity: number = 1;
+  productError: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +35,11 @@ export class ProductComponent {
 
   handleAddToCart(product: Product, quantity: number): void {
     const userId = localStorage.getItem('userId');
+
+        if (userId?.toUpperCase() === product.sellerId.toUpperCase()) {
+      this.productError = 'You cannot add your own items to your shopping cart.'
+      return;
+    }
 
     const cartItem: CreateCartItem = {
       productId: product.productId,

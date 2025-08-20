@@ -17,10 +17,8 @@
 
   <div class="conversation-card">
       <div *ngFor="let message of conversation" class="conversation-card-item" [ngStyle]="{'background-color': message.receiverId === userId ? '#D6CFDB' : 'white' }">
+        <img [src]="message.senderId === userId ? receiverUser.imageUrl : senderUser.imageUrl" alt="User Avatar" class="user-image">
     <div class="text-content">
-      <div *ngIf="senderUser">
-        <img [src]="senderUser.imageUrl" alt="User Avatar" class="user-image">
-      </div>
         <b>
           {{ message.senderId === userId ? 'To' : 'From' }}
           {{ message.senderId === userId ? message.receiverUsername : message.senderUsername }}
