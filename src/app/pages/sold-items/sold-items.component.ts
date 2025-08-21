@@ -20,7 +20,7 @@ export class SoldItemsComponent {
     const userId = localStorage.getItem('userId');
 
     if (userId) {
-      this.ordersService.getSavedItems(userId).subscribe({
+      this.ordersService.getSoldItems(userId).subscribe({
         next: (data) => {
           this.soldItems = data;
           console.log('Saved Items succesfully loaded.');

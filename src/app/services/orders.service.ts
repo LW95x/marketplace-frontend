@@ -20,7 +20,7 @@ export class OrdersService {
     return this.http.get<Order>(`${this.apiUrl}/users/${user_id}/orders/${order_id}`);
   }
 
-  getSavedItems(user_id: string): Observable<SoldItem[]> {
+  getSoldItems(user_id: string): Observable<SoldItem[]> {
     return this.http.get<SoldItem[]>(`${this.apiUrl}/users/${user_id}/orders/sold-items`);
   }
 

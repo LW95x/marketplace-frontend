@@ -23,7 +23,11 @@ export class OrdersComponent {
     if (userId) {
       this.orderService.getOrdersByUserId(userId).subscribe({
         next: (data) => {
-          this.orders = data;
+          const sortedData = [...data].sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
+          
+          this.orders = sortedData;
           console.log('User orders fetched succesfully');
           
           this.orders.forEach((order) => {
