@@ -9,4 +9,5 @@ export interface CartItem {
   imageUrls?: string[];
   sellerName?: string;
   category?: string;
+  sellerId?: string;
 }

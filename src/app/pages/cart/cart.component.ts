@@ -40,6 +40,7 @@ export class CartComponent {
                 item.category = product.category;
                 item.imageUrls = product.imageUrls;
                 item.sellerName = product.sellerName;
+                item.sellerId = product.sellerId;
               },
               error: (err) => console.error(err),
             });

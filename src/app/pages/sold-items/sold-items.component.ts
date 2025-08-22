@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SoldItem } from 'src/app/models/order-item.model';
 import { OrdersService } from 'src/app/services/orders.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-sold-items',
@@ -10,7 +11,7 @@ import { OrdersService } from 'src/app/services/orders.service';
 export class SoldItemsComponent {
   soldItems: SoldItem[] = [];
 
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService, private productService: ProductsService) {}
 
   ngOnInit() {
     this.loadSoldItems();
@@ -23,6 +24,7 @@ export class SoldItemsComponent {
       this.ordersService.getSoldItems(userId).subscribe({
         next: (data) => {
           this.soldItems = data;
+
           console.log('Saved Items succesfully loaded.');
         },
         error: (err) => console.error('Saved Items could not be found.', err),
