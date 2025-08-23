@@ -9,7 +9,10 @@
           <div class="text-content">
             <h1 style="margin-top: 1rem">{{ savedItem.title}}</h1>
             <p>Description: {{ savedItem.description }}</p>
-            <p>Seller: {{ savedItem.sellerName }}</p>
+            <p>Seller: {{ savedItem.sellerName }} <a
+                    [routerLink]="['/messages', savedItem.sellerId]"
+                    style="text-decoration: none"
+                  >(Contact seller)</a></p>
             <p>Category: {{ savedItem.category }}</p>
           </div>
         </a>

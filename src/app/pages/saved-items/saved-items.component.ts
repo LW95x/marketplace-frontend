@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SavedItem } from 'src/app/models/saved-item.model';
+import { ProductsService } from 'src/app/services/products.service';
 import { SavedItemsService } from 'src/app/services/saved-items.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class SavedItemsComponent {
   savedItems: SavedItem[] | null = null;
 
   constructor(
-    private savedItemService: SavedItemsService
+    private savedItemService: SavedItemsService,
+    private productService: ProductsService
   ) {}
 
   ngOnInit() {
@@ -25,6 +27,15 @@ export class SavedItemsComponent {
       this.savedItemService.getSavedItems(userId).subscribe({
         next: (data) => {
           this.savedItems = data;
+
+          this.savedItems.forEach((item) => {
+            this.productService.getProductById(item.productId).subscribe({
+              next: (product) => {
+                item.sellerId = product.sellerId;
+              }
+            })
+          })
+          
         },
         error: (err) => console.error('Could not find users saved item list', err),
       });

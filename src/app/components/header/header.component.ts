@@ -46,7 +46,7 @@ export class HeaderComponent {
   logoutConfirmation(): void {
     const confirmation = confirm('Are you sure you want to log out?');
     if (confirmation) {
-      localStorage.removeItem('token');
+      localStorage.clear();
       this.loggedIn = false;
       window.location.href = '/login';
     }

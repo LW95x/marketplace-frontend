@@ -1,17 +1,18 @@
 export interface SavedItem {
-    Id: string;
-    productId: string;
-    userId: string;
-    title: string;
-    description: string;
-    price: number;
-    quantity: number;
-    category: string;
-    sellerName: string;
-    imageUrls: string[];
+  Id: string;
+  productId: string;
+  userId: string;
+  title: string;
+  description: string;
+  price: number;
+  quantity: number;
+  category: string;
+  sellerName: string;
+  imageUrls: string[];
+  sellerId: string;
 }
 
 export interface AddSavedItem {
-    productId: string;
-    userId: string;
+  productId: string;
+  userId: string;
 }
