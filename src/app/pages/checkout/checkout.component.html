@@ -17,11 +17,12 @@
             <label>Post Code:</label>
             <input [(ngModel)]="postCode" type="text" id="postCode" name="postCode" required>
             </div>
-
+          <div class="payment-card-container">
           <ngx-stripe-card
             [options]="cardOptions"
             [elementsOptions]="elementsOptions">
           </ngx-stripe-card>
+          </div>
           <button mat-flat-button class="custom-button" type="submit">Complete Order</button>
           {{paymentError}}
         </form>

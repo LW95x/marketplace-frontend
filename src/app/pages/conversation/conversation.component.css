@@ -20,6 +20,9 @@ textarea {
   resize: none;
   width: 40rem;
   height: 5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  padding: 12px;
 }
 
 .conversation-card {

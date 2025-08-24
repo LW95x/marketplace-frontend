@@ -16,7 +16,7 @@
   </form>
 
   <div class="conversation-card">
-      <div *ngFor="let message of conversation" class="conversation-card-item" [ngStyle]="{'background-color': message.receiverId === userId ? '#D6CFDB' : 'white' }">
+      <div *ngFor="let message of conversation" class="conversation-card-item" [ngStyle]="{'background-color': (''+message.receiverId) === (''+userId) ? '#D6CFDB' : 'white' }">
         <img [src]="message.senderId === userId ? receiverUser.imageUrl : senderUser.imageUrl" alt="User Avatar" class="user-image">
     <div class="text-content">
         <b>
