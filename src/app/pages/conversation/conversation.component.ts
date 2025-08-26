@@ -48,6 +48,14 @@ export class ConversationComponent implements OnInit, OnDestroy {
     }
  }
 
+ msgTracker(msg: any): boolean {
+  return this.normaliseMsg(msg?.senderId) === this.normaliseMsg(this.userId);
+ }
+
+ normaliseMsg(msg: any): string {
+  return (msg ?? '').toString().trim();
+ }
+
  loadSingleConversation(): void {
   const userId = localStorage.getItem('userId');
 
