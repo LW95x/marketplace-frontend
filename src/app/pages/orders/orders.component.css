@@ -132,6 +132,10 @@
   object-fit: contain;
 }
 
-p {
-    margin-left: 1rem;
+p, h1 {
+    margin-left: 2rem;
+}
+
+td {
+  text-align: center;
 }

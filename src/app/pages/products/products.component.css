@@ -125,3 +125,16 @@
     justify-content: center;
     gap: 1rem;
   }
+
+  .custom-button {
+    background-color: #ECE6F0 !important; 
+    transition: background-color 1s;
+    width: 15rem; 
+    height: 4rem; 
+    align-self: center;
+    margin-bottom: 1rem;
+    margin-top: auto;
+    border: 1px solid #ECE6F0;
+    border-radius: 1rem;
+    font-weight: bold;
+}

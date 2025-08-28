@@ -3,7 +3,7 @@
   <div *ngFor="let order of orders" class="order-card">
     <div class="order-card-item">
       <div class="text-content">
-        <p><b>Order ID:</b> {{ order.orderId }}</p>
+        <h1>Order {{ order.orderId }}</h1>
         <p><b>Delivery Address:</b> {{ order.address }}</p>
         <p><b>Order Date:</b> {{ order.date | date : "HH:mm - dd/MM/yyyy" }}</p>
         <p><b>Order Status:</b> {{ order.status }}</p>
